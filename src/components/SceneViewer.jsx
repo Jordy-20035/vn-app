@@ -55,13 +55,16 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
     onChoose?.(choice);
   };
 
+  // Debug characters
+  console.log('SceneViewer - Characters:', scene.characters);
+
   return (
     <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
       {/* Background */}
       <div className="vn-bg" style={{ ...bgStyle, width: "100%", height: "100%", position: "absolute", inset: 0 }} />
 
       {/* Content overlay */}
-      <div className="vn-overlay" style={{ position: "relative", zIndex: 2 }}>
+      <div className="vn-overlay" style={{ position: "relative", zIndex: 2, minHeight: "100vh" }}>
         {/* Stats HUD */}
         <div 
           className="vn-hud" 
@@ -75,6 +78,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
             display: 'flex',
             flexDirection: 'column',
             gap: 4,
+            zIndex: 50,
           }}
         >
           <div style={{ fontSize: 12 }}>⚖️ Честность: {stats.honesty ?? 0}</div>
@@ -83,22 +87,39 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
           <div style={{ fontSize: 12 }}>💎 Обаяние: {stats.charm ?? 0}</div>
         </div>
 
-        {/* Character sprites (if any) */}
-        {scene.characters && scene.characters.map((char) => (
-          <img
-            key={char.id}
-            src={char.image}
-            alt={char.id}
-            style={{
-              position: 'absolute',
-              left: char.x || '10%',
-              bottom: char.y || '0%',
-              transform: `scale(${char.scale || 1})`,
-              zIndex: 10,
-              pointerEvents: 'none',
-            }}
-          />
-        ))}
+        {/* Character sprites */}
+        {scene.characters && scene.characters.length > 0 && (
+          <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none' }}>
+            {scene.characters.map((char) => {
+              console.log('Rendering character:', char);
+              return (
+                <img
+                  key={char.id}
+                  src={char.image}
+                  alt={char.id}
+                  style={{
+                    position: 'absolute',
+                    left: char.x || '10%',
+                    bottom: char.y || '0',
+                    height: '80vh',
+                    maxHeight: '800px',
+                    width: 'auto',
+                    transform: `scale(${char.scale || 1})`,
+                    transformOrigin: 'bottom center',
+                    pointerEvents: 'none',
+                  }}
+                  onError={(e) => {
+                    console.error('Failed to load character image:', char.image);
+                    e.target.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log('Character image loaded:', char.image);
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
 
         {/* Dialogue window */}
         <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", minHeight: "100vh", padding: 20, boxSizing: "border-box" }}>
@@ -138,7 +159,15 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
                   <button
                     key={choice.id}
                     className="vn-btn"
-                    onClick={() => isFree ? onFreeAction?.() : handleChoice(choice)}
+                    onClick={() => {
+                      console.log('Choice clicked:', choice.id, 'isFree:', isFree);
+                      if (isFree) {
+                        console.log('Calling onFreeAction');
+                        onFreeAction?.();
+                      } else {
+                        handleChoice(choice);
+                      }
+                    }}
                     disabled={!availability.available && isPaid}
                     style={{
                       width: '100%',

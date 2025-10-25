@@ -366,24 +366,74 @@ function App() {
     }
   };
 
-  // Handle free action
-  const handleFreeAction = (data) => {
+  // Handle free action submission with AI
+  const handleFreeAction = async (data) => {
+    console.log('handleFreeAction called with:', data);
     setFreeModalOpen(false);
     
-    // Mock AI response (in production, call AI API)
-    const narration = `Вы решили: "${data.action}" ${data.intent ? `(${data.intent})` : ''}`;
-    
-    showAlert(`Свободное действие:\n${narration}\n\nВ финальной версии AI обработает ваш выбор.`);
-    
-    // Random stat change as example
-    const randomStat = ['honesty', 'cunning', 'reputation', 'charm'][Math.floor(Math.random() * 4)];
-    const randomChange = Math.random() > 0.5 ? 1 : -1;
-    
-    updateStats({ [randomStat]: randomChange });
-    setEpisodeStats(prev => ({
-      ...prev,
-      [randomStat]: prev[randomStat] + randomChange,
-    }));
+    if (!data.action.trim()) {
+      alert("Пожалуйста, опишите действие.");
+      return;
+    }
+
+    // Show loading state
+    setToast({ message: "AI обрабатывает ваше действие...", type: "info" });
+
+    try {
+      // Import YandexGPT service
+      const { processYandexGPTAction } = await import('./services/yandexGPT.js');
+      
+      const currentScene = scenes[currentSceneId];
+      
+      console.log('Calling YandexGPT with:', {
+        action: data.action,
+        intent: data.intent,
+        scene: currentScene.id,
+        stats: episodeStats
+      });
+      
+      // Call YandexGPT API
+      const result = await processYandexGPTAction({
+        playerAction: `${data.action}${data.intent ? ` (${data.intent})` : ''}`,
+        scene: currentScene,
+        stats: episodeStats,
+        characters: currentScene.characters || [],
+      });
+
+      console.log('YandexGPT result:', result);
+
+      if (result.success) {
+        // Show AI response using browser alert (not Telegram)
+        alert(`🎭 Ответ AI:\n\n${result.narrative}\n\nИсход: ${result.outcome || 'neutral'}`);
+        
+        // Update stats if AI suggested changes
+        if (result.statsChange) {
+          updateStats(result.statsChange);
+          setEpisodeStats(prev => {
+            const updated = { ...prev };
+            Object.entries(result.statsChange).forEach(([stat, value]) => {
+              updated[stat] = (updated[stat] || 0) + value;
+            });
+            return updated;
+          });
+        }
+        
+        // Navigate if AI suggests next scene
+        if (result.nextScene) {
+          setCurrentSceneId(result.nextScene);
+        }
+        
+        setToast({ message: "Действие выполнено!", type: "success" });
+      } else {
+        // AI error or invalid action
+        alert(`❌ Ошибка:\n\n${result.narrative || result.error || "Не удалось обработать действие."}`);
+        setToast({ message: result.reason || "Ошибка AI", type: "error" });
+      }
+    } catch (error) {
+      console.error('Free action error:', error);
+      alert("❌ Произошла ошибка при обработке действия. Попробуйте другой вариант.\n\nДетали в консоли.");
+      setToast({ message: "Ошибка обработки", type: "error" });
+    }
   };
 
   // Handle episode complete
