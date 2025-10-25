@@ -404,7 +404,13 @@ const [toast, setToast] = useState(null);
 
       if (result.success) {
         // Show AI response using browser alert (not Telegram)
-        alert(`🎭 Ответ AI:\n\n${result.narrative}\n\nИсход: ${result.outcome || 'neutral'}`);
+        const statsInfo = result.statsChange && Object.keys(result.statsChange).length > 0
+          ? '\n\n📊 Статы:\n' + Object.entries(result.statsChange).map(([stat, value]) => 
+              `${stat}: ${value > 0 ? '+' : ''}${value}`
+            ).join('\n')
+          : '';
+        
+        alert(`🎭 Ответ AI:\n\n${result.narrative}\n\nИсход: ${result.outcome || 'neutral'}${statsInfo}\n\n✅ Теперь выберите один из основных вариантов, чтобы продолжить.`);
         
         // Update stats if AI suggested changes
         if (result.statsChange) {
@@ -418,12 +424,13 @@ const [toast, setToast] = useState(null);
           });
         }
         
-        // Navigate if AI suggests next scene
-        if (result.nextScene) {
+        // Navigate if AI suggests next scene (rarely happens)
+        if (result.nextScene && result.nextScene !== currentSceneId) {
+          console.log('AI suggested scene transition:', result.nextScene);
           setCurrentSceneId(result.nextScene);
         }
         
-        setToast({ message: "Действие выполнено!", type: "success" });
+        setToast({ message: "✅ Действие выполнено! Выберите основной вариант.", type: "success" });
       } else {
         // AI error or invalid action
         alert(`❌ Ошибка:\n\n${result.narrative || result.error || "Не удалось обработать действие."}`);
