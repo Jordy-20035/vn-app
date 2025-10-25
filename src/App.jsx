@@ -88,9 +88,14 @@ function FreeActionModal({ isOpen, onClose, onSubmit }) {
   const [actionText, setActionText] = useState("");
   const [intentText, setIntentText] = useState("");
 
+  useEffect(() => {
+    console.log('FreeActionModal state:', { isOpen });
+  }, [isOpen]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (actionText.trim()) {
+      console.log('Submitting free action:', { action: actionText, intent: intentText });
       onSubmit({ action: actionText, intent: intentText });
       setActionText("");
       setIntentText("");

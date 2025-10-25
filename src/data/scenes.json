@@ -2,9 +2,25 @@
   "scene_001": {
     "id": "scene_001",
     "title": "Вход в агентство",
-    "image": "/assets/agency_lobby.jpg",
+    "image": "/assets/backgrounds/agency_lobby.jpg",
     "speaker": "Анна",
     "text": "Анна зашла в агентство, держа в руках папку с материалами. В приёмной тихо, запах кофе и свежей выпечки. За стойкой сидит секретарь, погружённый в документы.",
+    "characters": [
+      {
+        "id": "anna",
+        "image": "/assets/characters/anna-neutral.png",
+        "x": "15%",
+        "y": "0",
+        "scale": 1.0
+      },
+      {
+        "id": "secretary",
+        "image": "/assets/characters/sec-neutral.png",
+        "x": "65%",
+        "y": "0",
+        "scale": 1.0
+      }
+    ],
     "choices": [
       { 
         "id": "ask_director", 
@@ -37,9 +53,25 @@
   "scene_002": {
     "id": "scene_002",
     "title": "Разговор с секретарём",
-    "image": "/assets/office_desk.jpg",
+    "image": "/assets/backgrounds/office_desk.jpg",
     "speaker": "Секретарь",
     "text": "Секретарь поднимает взгляд и устало кивает. «Директор занят весь день. Вы можете записаться на следующую неделю, если хотите.» Анна чувствует, что это её единственный шанс.",
+    "characters": [
+      {
+        "id": "anna",
+        "image": "/assets/characters/anna-neutral.png",
+        "x": "15%",
+        "y": "0",
+        "scale": 1.0
+      },
+      {
+        "id": "secretary",
+        "image": "/assets/characters/sec-smile.png",
+        "x": "65%",
+        "y": "0",
+        "scale": 1.0
+      }
+    ],
     "choices": [
       { 
         "id": "insist", 
