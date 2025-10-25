@@ -89,10 +89,11 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
       {scene.characters && scene.characters.length > 0 && (
         <div style={{ 
           position: 'absolute', 
-          bottom: '200px',
+          bottom: '180px',
           left: 0,
           right: 0,
-          height: 'calc(100vh - 250px)',
+          height: '70vh',
+          maxHeight: '600px',
           zIndex: 5, 
           pointerEvents: 'none',
         }}>
@@ -108,11 +109,13 @@ export default function SceneViewer({ scene, onChoose, onFreeAction }) {
                   left: char.x || '10%',
                   bottom: 0,
                   height: '100%',
-                  maxHeight: '600px',
                   width: 'auto',
+                  maxWidth: '40vw',
+                  objectFit: 'contain',
                   transform: `scale(${char.scale || 1})`,
                   transformOrigin: 'bottom center',
                   pointerEvents: 'none',
+                  border: '2px solid rgba(255,0,0,0.3)',
                 }}
                 onError={(e) => {
                   console.error('Failed to load character image:', char.image);
