@@ -235,6 +235,7 @@ function App() {
   // Scene states
   const [currentSceneId, setCurrentSceneId] = useState(null);
   const [scenes] = useState(scenesData || {});
+  const [isProcessingChoice, setIsProcessingChoice] = useState(false);
   
   // Episode tracking
   const [currentEpisodeId, setCurrentEpisodeId] = useState(null);
@@ -249,7 +250,7 @@ function App() {
   const [freeModalOpen, setFreeModalOpen] = useState(false);
   const [showAdScreen, setShowAdScreen] = useState(null); // null | 'pre-episode' | 'post-episode' | 'bonus'
   const [showEpisodeSummary, setShowEpisodeSummary] = useState(false);
-const [toast, setToast] = useState(null);
+  const [toast, setToast] = useState(null);
 
   const menuRef = React.useRef(null);
 
@@ -314,16 +315,18 @@ const [toast, setToast] = useState(null);
     }, 1500);
   };
 
-  // Handle choice in scene
+  // Handle choice in scene with protection against multiple clicks
   const handleChoose = (choice) => {
-  if (!choice) return;
+    if (!choice || isProcessingChoice) return; // Protection!
 
+    setIsProcessingChoice(true);
     hapticFeedback('light');
 
     // Check and spend coins if needed
-  if (choice.cost) {
+    if (choice.cost) {
       if (coins < choice.cost) {
         setToast({ message: `Недостаточно алмазов! Нужно ${choice.cost} 💎`, type: "error" });
+        setIsProcessingChoice(false);
         return;
       }
 
@@ -332,6 +335,8 @@ const [toast, setToast] = useState(null);
           spendCoins(choice.cost);
           setToast({ message: `Списано ${choice.cost} 💎`, type: "success" });
           applyChoiceEffects(choice);
+        } else {
+          setIsProcessingChoice(false); // Re-enable if cancelled
         }
       });
       return;
@@ -343,7 +348,7 @@ const [toast, setToast] = useState(null);
   // Apply choice effects
   const applyChoiceEffects = (choice) => {
     // Update stats
-  if (choice.effects) {
+    if (choice.effects) {
       updateStats(choice.effects);
       
       // Track episode stats
@@ -352,18 +357,23 @@ const [toast, setToast] = useState(null);
         cunning: prev.cunning + (choice.effects.cunning || 0),
         reputation: prev.reputation + (choice.effects.reputation || 0),
         charm: prev.charm + (choice.effects.charm || 0),
-    }));
-  }
+      }));
+    }
 
-    // Navigate to next scene
-  if (choice.goto) {
-      if (choice.goto === 'episode_end') {
-        // Episode completed
-        handleEpisodeComplete();
-      } else {
-    setCurrentSceneId(choice.goto);
-  }
-}
+    // Navigate to next scene with delay for animation
+    if (choice.goto) {
+      setTimeout(() => {
+        if (choice.goto === 'episode_end') {
+          // Episode completed
+          handleEpisodeComplete();
+        } else {
+          setCurrentSceneId(choice.goto);
+        }
+        setIsProcessingChoice(false); // Re-enable after transition
+      }, 300);
+    } else {
+      setIsProcessingChoice(false);
+    }
   };
 
   // Handle free action submission with AI
@@ -539,6 +549,7 @@ const [toast, setToast] = useState(null);
           scene={sceneObj}
           onChoose={handleChoose}
           onFreeAction={() => setFreeModalOpen(true)}
+          isProcessing={isProcessingChoice}
         />
 
         <FreeActionModal

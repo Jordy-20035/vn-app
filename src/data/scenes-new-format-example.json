@@ -1,0 +1,89 @@
+{
+  "scene_001_new": {
+    "id": "scene_001_new",
+    "title": "Вход в агентство",
+    "image": "/assets/backgrounds/agency_lobby.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Анна",
+        "text": "Анна зашла в агентство, держа в руках папку с материалами. В приёмной тихо, запах кофе и свежей выпечки.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "За стойкой сидит секретарь, погружённый в документы. Нужно подойти.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Добрый день. Чем могу помочь?",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-smile.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Здравствуйте, я ищу директора агентства. У меня важное дело.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Директор сейчас на встрече. Могу я передать ему какое-то сообщение?",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      { 
+        "id": "ask_director", 
+        "label": "Попросить немедленной встречи", 
+        "goto": "scene_002", 
+        "effects": { "honesty": 1, "charm": 1 } 
+      },
+      { 
+        "id": "pass_by", 
+        "label": "Сказать, что подождёте", 
+        "goto": "scene_003",
+        "effects": { "honesty": 1 }
+      },
+      { 
+        "id": "bribe", 
+        "label": "Предложить взятку за встречу", 
+        "goto": "scene_004",
+        "cost": 20,
+        "effects": { "cunning": 2, "reputation": -1 }
+      },
+      { 
+        "id": "free_action", 
+        "label": "✨ Свободное действие...", 
+        "free": true 
+      }
+    ],
+    "meta": { "locId": "agency_lobby" }
+  }
+}
+
