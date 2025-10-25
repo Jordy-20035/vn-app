@@ -2,6 +2,17 @@
 
 const YANDEX_GPT_URL = 'https://llm.api.cloud.yandex.net/foundationModels/v1/completion';
 
+// Get API credentials from environment
+const API_KEY = import.meta.env.VITE_YANDEX_API_KEY;
+const FOLDER_ID = import.meta.env.VITE_YANDEX_FOLDER_ID;
+
+// Log configuration status (without exposing keys)
+console.log('YandexGPT Config:', {
+  hasApiKey: !!API_KEY,
+  hasFolderId: !!FOLDER_ID,
+  folderIdLength: FOLDER_ID?.length || 0
+});
+
 /**
  * Call YandexGPT API with free action
  */
@@ -10,9 +21,18 @@ export async function processYandexGPTAction({
   scene,
   stats,
   characters,
-  apiKey,
-  folderId,
 }) {
+  // Use environment variables
+  const apiKey = API_KEY;
+  const folderId = FOLDER_ID;
+
+  if (!apiKey || !folderId) {
+    return {
+      success: false,
+      error: 'YandexGPT credentials not configured',
+      narrative: 'Ошибка конфигурации AI. Проверьте настройки API.',
+    };
+  }
   try {
     const systemPrompt = await buildSystemPrompt(scene, stats, characters);
     const userPrompt = `Действие игрока: "${playerAction}"`;
@@ -97,6 +117,9 @@ async function buildSystemPrompt(scene, stats, characters) {
 async function loadPromptTemplate() {
   try {
     const response = await fetch('/data/prompts/system-prompt.txt');
+    if (!response.ok) {
+      throw new Error('Prompt file not found');
+    }
     return await response.text();
   } catch (error) {
     console.error('Failed to load prompt template:', error);
