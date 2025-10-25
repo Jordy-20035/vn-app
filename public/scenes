@@ -1,0 +1,67 @@
+{
+  "scene_001": {
+    "id": "scene_001",
+    "title": "Вход в агентство",
+    "bg": "/assets/backgrounds/agency_lobby.jpg",
+    "music": "/assets/audio/lobby_loop.mp3",
+    "text": "Анна зашла в агентство, держа в руках папку с материалами. В приёмной тихо, запах кофе.",
+    "characters": [
+      { "name": "anna", "image": "/assets/characters/anna-neutral.png", "pos": "left" },
+      { "name": "secretary", "image": "/assets/characters/sec-smile.png", "pos": "right" }
+    ],
+    "choices": [
+      { "id": "ask_director", "label": "Спросить, где директор?", "goto": "scene_002", "effects": { "honesty": 1 } },
+      { "id": "pass_by", "label": "Проигнорировать и пройти мимо", "goto": "scene_003" },
+      { "id": "fast_track", "label": "Заплатить за проход (50💎)", "goto": "scene_004", "cost": 50 },
+      { "id": "free_action", "label": "Свободное действие...", "free": true }
+    ],
+    "meta": { "locId": "agency_lobby" }
+  },
+
+  "scene_002": {
+    "id": "scene_002",
+    "title": "Разговор с секретарём",
+    "bg": "/assets/backgrounds/office_desk.jpg",
+    "music": "/assets/audio/office_ambience.mp3",
+    "text": "Секретарь кивает и говорит, что директор занят. Анна пытается объяснить причину своего визита.",
+    "characters": [
+      { "name": "secretary", "image": "/assets/characters/sec-neutral.png", "pos": "right" }
+    ],
+    "choices": [
+      { "id": "insist", "label": "Убедительно просить собеседование", "goto": "scene_004", "effects": { "cunning": 1 } },
+      { "id": "leave", "label": "Сдержаться и уйти", "goto": "scene_003", "effects": { "honesty": 1 } }
+    ],
+    "meta": { "locId": "agency_lobby" }
+  },
+
+  "scene_003": {
+    "id": "scene_003",
+    "title": "Улица у агентства",
+    "bg": "/assets/backgrounds/agency_street.jpg",
+    "music": "/assets/audio/street_ambience.mp3",
+    "text": "Анна выходит на улицу и думает, как ещё попробовать попасть в агентство.",
+    "characters": [],
+    "choices": [
+      { "id": "retry", "label": "Попробовать ещё раз", "goto": "scene_001" }
+    ],
+    "meta": { "locId": "agency_streetfront" }
+  },
+
+  "scene_004": {
+    "id": "scene_004",
+    "title": "Надежда",
+    "bg": "/assets/backgrounds/office_interior.jpg",
+    "music": "/assets/audio/office_interior.mp3",
+    "text": "Секретарь смягчается и записывает имя Анны. Возможно, шанс появится.",
+    "characters": [
+      { "name": "anna", "image": "/assets/characters/anna-happy.png", "pos": "left" },
+      { "name": "secretary", "image": "/assets/characters/sec-smile.png", "pos": "right" }
+    ],
+    "choices": [
+      { "id": "end", "label": "Дальше ->", "goto": "scene_003" }
+    ],
+    "meta": { "locId": "agency_office" }
+  }
+}
+
+

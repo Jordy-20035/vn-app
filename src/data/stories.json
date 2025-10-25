@@ -1,0 +1,34 @@
+{
+  "stories": [
+    {
+      "id": "story_1",
+      "title": "Пешки не ходят назад",
+      "cover": "/assets/first-story-cover.png",
+      "tomeSplash": "/assets/first-story-cover.png",
+      "tome": 1,
+      "annotation": "После пропажи сестры жизнь Анны Майер больше не будет прежней. К чему приведёт жизнь между расследованием и заказными делами?",
+      "episodesCount": 10,
+      "locked": false,
+      "startSceneId": "scene_001",
+      "episodes": [
+        {
+          "id": "ep_1",
+          "title": "Пилотная серия",
+          "sceneIds": ["scene_001", "scene_002", "scene_003", "scene_004"]
+        }
+      ]
+    },
+    {
+      "id": "story_2",
+      "title": "Когда дьявол требует долг",
+      "cover": "/assets/second-story-cover.png",
+      "tomeSplash": "/assets/second-story-cover.png",
+      "tome": 1,
+      "annotation": "Страшный договор с дьяволом даёт о себе знать спустя столетия. Что произойдёт, когда долг придётся вернуть?",
+      "episodesCount": 8,
+      "locked": true,
+      "startSceneId": "scene_101"
+    }
+  ]
+}
+

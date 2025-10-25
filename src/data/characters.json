@@ -1,0 +1,37 @@
+{
+  "anna": {
+    "id": "anna",
+    "name": "Анна Майер",
+    "role": "protagonist",
+    "personality": "Решительная, умная, немного импульсивная. Ищет пропавшую сестру и готова на многое ради истины.",
+    "sprites": {
+      "neutral": "/assets/characters/anna-neutral.png",
+      "happy": "/assets/characters/anna-happy.png"
+    },
+    "defaultSprite": "neutral",
+    "position": {
+      "x": "15%",
+      "y": "0",
+      "scale": 1.0,
+      "anchor": "bottom-left"
+    }
+  },
+  "secretary": {
+    "id": "secretary",
+    "name": "Секретарь",
+    "role": "npc",
+    "personality": "Усталая, но добрая женщина средних лет. Работает в агентстве давно.",
+    "sprites": {
+      "neutral": "/assets/characters/sec-neutral.png",
+      "smile": "/assets/characters/sec-smile.png"
+    },
+    "defaultSprite": "neutral",
+    "position": {
+      "x": "65%",
+      "y": "0",
+      "scale": 1.0,
+      "anchor": "bottom-left"
+    }
+  }
+}
+
