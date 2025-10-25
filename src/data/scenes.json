@@ -9,14 +9,14 @@
       {
         "id": "anna",
         "image": "/assets/characters/anna-neutral.png",
-        "x": "15%",
+        "x": "5%",
         "y": "0",
         "scale": 1.0
       },
       {
         "id": "secretary",
         "image": "/assets/characters/sec-neutral.png",
-        "x": "65%",
+        "x": "75%",
         "y": "0",
         "scale": 1.0
       }
@@ -60,14 +60,14 @@
       {
         "id": "anna",
         "image": "/assets/characters/anna-neutral.png",
-        "x": "15%",
+        "x": "5%",
         "y": "0",
         "scale": 1.0
       },
       {
         "id": "secretary",
         "image": "/assets/characters/sec-smile.png",
-        "x": "65%",
+        "x": "75%",
         "y": "0",
         "scale": 1.0
       }

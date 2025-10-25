@@ -37,33 +37,24 @@ export async function processYandexGPTAction({
     const systemPrompt = await buildSystemPrompt(scene, stats, characters);
     const userPrompt = `Действие игрока: "${playerAction}"`;
 
-    const requestBody = {
-      modelUri: `gpt://${folderId}/yandexgpt-lite/latest`,
-      completionOptions: {
-        stream: false,
-        temperature: 0.7,
-        maxTokens: 1000,
-      },
-      messages: [
-        {
-          role: 'system',
-          text: systemPrompt,
-        },
-        {
-          role: 'user',
-          text: userPrompt,
-        },
-      ],
-    };
+    // Use Vercel serverless function to avoid CORS issues
+    const apiUrl = '/api/yandex-gpt';
+    
+    console.log('Calling YandexGPT via proxy:', apiUrl);
 
-    const response = await fetch(YANDEX_GPT_URL, {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Api-Key ${apiKey}`,
-        'x-folder-id': folderId,
       },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify({
+        prompt: {
+          system: systemPrompt,
+          user: userPrompt,
+        },
+        apiKey,
+        folderId,
+      }),
     });
 
     if (!response.ok) {

@@ -42,7 +42,7 @@ function Splash() {
 // Chapter splash component
 function ChapterSplash({ image, title }) {
   const bg = image || "/assets/tome1-cover.jpg";
-  
+
   return (
     <div
       style={{
@@ -161,7 +161,7 @@ function FreeActionModal({ isOpen, onClose, onSubmit }) {
               value={intentText}
               onChange={(e) => setIntentText(e.target.value)}
               placeholder="Например: уверенно и спокойно"
-              style={{
+          style={{
                 width: "100%",
                 padding: 10,
                 borderRadius: 8,
@@ -249,7 +249,7 @@ function App() {
   const [freeModalOpen, setFreeModalOpen] = useState(false);
   const [showAdScreen, setShowAdScreen] = useState(null); // null | 'pre-episode' | 'post-episode' | 'bonus'
   const [showEpisodeSummary, setShowEpisodeSummary] = useState(false);
-  const [toast, setToast] = useState(null);
+const [toast, setToast] = useState(null);
 
   const menuRef = React.useRef(null);
 
@@ -277,13 +277,13 @@ function App() {
       return;
     }
 
-    if (energy <= 0) {
+  if (energy <= 0) {
       showAlert("Недостаточно энергии! Подождите восстановления или купите в магазине.");
-      return;
-    }
+    return;
+  }
 
     // Show pre-episode ad
-    setSelectedStory(story);
+  setSelectedStory(story);
     setShowAdScreen('pre-episode');
   };
 
@@ -300,14 +300,14 @@ function App() {
     // Show chapter splash
     setChapterSplashImage(selectedStory.tomeSplash || selectedStory.cover);
     setChapterTitle(`Том ${selectedStory.tome || 1}`);
-    setChapterLoading(true);
+  setChapterLoading(true);
 
     // Reset episode stats
     setEpisodeStats({ honesty: 0, cunning: 0, reputation: 0, charm: 0 });
 
     // Start episode
-    setTimeout(() => {
-      setChapterLoading(false);
+  setTimeout(() => {
+    setChapterLoading(false);
       const startSceneId = selectedStory.startSceneId || "scene_001";
       setCurrentSceneId(startSceneId);
       setCurrentEpisodeId(selectedStory.episodes?.[0]?.id || 'ep_1');
@@ -316,12 +316,12 @@ function App() {
 
   // Handle choice in scene
   const handleChoose = (choice) => {
-    if (!choice) return;
+  if (!choice) return;
 
     hapticFeedback('light');
 
     // Check and spend coins if needed
-    if (choice.cost) {
+  if (choice.cost) {
       if (coins < choice.cost) {
         setToast({ message: `Недостаточно алмазов! Нужно ${choice.cost} 💎`, type: "error" });
         return;
@@ -343,7 +343,7 @@ function App() {
   // Apply choice effects
   const applyChoiceEffects = (choice) => {
     // Update stats
-    if (choice.effects) {
+  if (choice.effects) {
       updateStats(choice.effects);
       
       // Track episode stats
@@ -352,18 +352,18 @@ function App() {
         cunning: prev.cunning + (choice.effects.cunning || 0),
         reputation: prev.reputation + (choice.effects.reputation || 0),
         charm: prev.charm + (choice.effects.charm || 0),
-      }));
-    }
+    }));
+  }
 
     // Navigate to next scene
-    if (choice.goto) {
+  if (choice.goto) {
       if (choice.goto === 'episode_end') {
         // Episode completed
         handleEpisodeComplete();
       } else {
-        setCurrentSceneId(choice.goto);
-      }
-    }
+    setCurrentSceneId(choice.goto);
+  }
+}
   };
 
   // Handle free action submission with AI
@@ -544,10 +544,10 @@ function App() {
   }
 
   // Main catalog view
-  return (
-    <div className="app-container">
+    return (
+  <div className="app-container">
       {/* Chapter loading splash */}
-      {chapterLoading && (
+    {chapterLoading && (
         <ChapterSplash image={chapterSplashImage} title={chapterTitle} />
       )}
 
@@ -602,7 +602,7 @@ function App() {
         />
       )}
 
-      <div className="app-inner">
+    <div className="app-inner">
         {/* Header */}
         <header className="app-header">
           <div className="app-header-inner">
