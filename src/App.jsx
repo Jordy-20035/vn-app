@@ -16,6 +16,15 @@ import scenesData from "./data/scenes.json";
 // Use public assets for images (Vercel compatibility)
 const splashBg = "/assets/splash-bg.jpg";
 
+// Check YandexGPT configuration on load
+console.log('=== ALTERRA INITIALIZATION ===');
+console.log('Environment:', import.meta.env.MODE);
+console.log('YandexGPT API Key present:', !!import.meta.env.VITE_YANDEX_API_KEY);
+console.log('YandexGPT Folder ID present:', !!import.meta.env.VITE_YANDEX_FOLDER_ID);
+console.log('API Key length:', import.meta.env.VITE_YANDEX_API_KEY?.length || 0);
+console.log('Folder ID:', import.meta.env.VITE_YANDEX_FOLDER_ID || 'NOT SET');
+console.log('==============================');
+
 // Splash screen component
 function Splash() {
   return (
