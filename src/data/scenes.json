@@ -21,7 +21,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-smile.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -41,7 +41,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-neutral.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       }
@@ -99,7 +99,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-smile.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -166,7 +166,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-neutral.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -186,7 +186,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-smile.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       }
@@ -234,7 +234,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-neutral.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -254,7 +254,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-neutral.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -322,7 +322,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-neutral.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -342,7 +342,7 @@
         "character": {
           "id": "secretary",
           "image": "/assets/characters/sec-smile.png",
-          "x": "75%",
+          "x": "55%",
           "scale": 1.0
         }
       },
@@ -405,7 +405,7 @@
       {
         "id": "secretary",
         "image": "/assets/characters/sec-neutral.png",
-        "x": "75%",
+        "x": "55%",
         "y": "0",
         "scale": 1.0
       }
@@ -456,7 +456,7 @@
       {
         "id": "secretary",
         "image": "/assets/characters/sec-smile.png",
-        "x": "75%",
+        "x": "55%",
         "y": "0",
         "scale": 1.0
       }
