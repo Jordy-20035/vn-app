@@ -89,8 +89,8 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
           bottom: 0,
           left: 0,
           right: 0,
-          height: '90vh',
-          maxHeight: 'none',
+          height: 'calc(100vh - 200px)',
+          maxHeight: '800px',
           zIndex: 5, 
           pointerEvents: 'none',
         }}>
