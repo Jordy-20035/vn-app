@@ -511,7 +511,7 @@ npm run preview  # Предпросмотр сборки
 ### Демо
 - **Telegram Bot:** `@alterrrabot`
 - **Mini App URL:** `https://t.me/alterrrabot/alterra`
-- **Web версия:** `[https://your-vercel-app.vercel.app](https://vn-app-git-main-jordy-20035s-projects.vercel.app/)`
+- **Web версия:** `https://vn-app-git-main-jordy-20035s-projects.vercel.app/`
 
 ### Презентационные материалы
 1. Видео демо (2-3 минуты)
