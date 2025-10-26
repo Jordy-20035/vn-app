@@ -85,10 +85,10 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
           key={currentDialogue.character.id}
           style={{
             position: 'absolute',
-            bottom: '180px',
+            bottom: 0,
             left: currentDialogue.character.x || '10%',
-            height: '70vh',
-            maxHeight: '600px',
+            height: '90vh',
+            maxHeight: 'none',
             zIndex: 5,
             pointerEvents: 'none',
             animation: 'fadeIn 0.3s ease-in',
@@ -100,7 +100,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
             style={{
               height: '100%',
               width: 'auto',
-              maxWidth: '40vw',
+              maxWidth: 'none',
               objectFit: 'contain',
               transform: `scale(${currentDialogue.character.scale || 1})`,
               transformOrigin: 'bottom center',

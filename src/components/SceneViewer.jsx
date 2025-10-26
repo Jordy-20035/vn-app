@@ -86,11 +86,11 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
       {(!scene.dialogue && scene.characters && scene.characters.length > 0) && (
         <div style={{ 
           position: 'absolute', 
-          bottom: '180px',
+          bottom: 0,
           left: 0,
           right: 0,
-          height: '70vh',
-          maxHeight: '600px',
+          height: '90vh',
+          maxHeight: 'none',
           zIndex: 5, 
           pointerEvents: 'none',
         }}>
@@ -105,7 +105,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
                 bottom: 0,
                 height: '100%',
                 width: 'auto',
-                maxWidth: '40vw',
+                maxWidth: 'none',
                 objectFit: 'contain',
                 transform: `scale(${char.scale || 1})`,
                 transformOrigin: 'bottom center',
