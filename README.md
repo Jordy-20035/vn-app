@@ -85,7 +85,7 @@
 
 ```bash
 # Клонируйте репозиторий
-git clone <your-repo-url>
+git clone https://github.com/Jordy-20035/vn-app/
 cd vn-app
 
 # Установите зависимости
