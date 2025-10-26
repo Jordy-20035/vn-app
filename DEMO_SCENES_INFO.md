@@ -1,101 +1,101 @@
-# 🎭 Demo Scenes - Quick Preview Guide
+# 🎭 Демо-сцены - Краткое руководство
 
-## What Was Created
+## Что было создано
 
-5 demo scenes showcasing the **dialogue system** with typewriter effects and character animations, using only your existing placeholder assets.
+5 демо-сцен, демонстрирующих **диалоговую систему** с эффектом печатной машинки и анимациями персонажей, используя только ваши существующие placeholder-ресурсы.
 
-## How to Access
+## Как получить доступ
 
-1. **Start the app:**
+1. **Запустите приложение:**
    ```bash
    npm run dev
    ```
 
-2. **In the story catalog**, look for:
+2. **В каталоге историй** найдите:
    - **🎭 ДЕМО: Офисные интриги**
-   - This is the first story in your catalog
+   - Это первая история в вашем каталоге
 
-3. **Click on it** and start the episode "Демо: Первый день"
+3. **Нажмите на неё** и начните эпизод "Демо: Первый день"
 
-## What's Included
+## Что включено
 
-### 5 Interactive Scenes
+### 5 интерактивных сцен
 
-#### **Scene 1: Утро в офисе** (Morning at the Office)
-- 4 dialogue lines between Anna and Secretary
-- 3 choice types: normal, demanding, and paid (20 diamonds)
-- Characters: Anna (neutral) & Secretary (smiling, neutral)
+#### **Сцена 1: Утро в офисе**
+- 4 реплики диалога между Анной и Секретарём
+- 3 типа выборов: обычный, требовательный и платный (20 алмазов)
+- Персонажи: Анна (нейтральная) и Секретарь (улыбается, нейтральный)
 
-#### **Scene 2: Подготовка к встрече** (Preparing for Meeting)
-- 3 dialogue lines
-- Anna's emotion changes from neutral → happy
-- Choices about how to prepare
+#### **Сцена 2: Подготовка к встрече**
+- 3 реплики диалога
+- Эмоция Анны меняется с нейтральной → счастливая
+- Выборы о том, как подготовиться
 
-#### **Scene 3: Конфронтация** (Confrontation)
-- 4 dialogue lines
-- Secretary reveals confidential information
-- Includes a **stat-locked choice** (requires Cunning ≥ 3)
+#### **Сцена 3: Конфронтация**
+- 4 реплики диалога
+- Секретарь раскрывает конфиденциальную информацию
+- Включает **выбор с требованием стата** (требуется Хитрость ≥ 3)
 
-#### **Scene 4: Неожиданный поворот** (Unexpected Turn)
-- 4 dialogue lines
-- Drama unfolds as director discovers the conversation
-- Includes a **stat-locked choice** (requires Charm ≥ 5)
+#### **Сцена 4: Неожиданный поворот**
+- 4 реплики диалога
+- Разворачивается драма, когда директор узнаёт о разговоре
+- Включает **выбор с требованием стата** (требуется Обаяние ≥ 5)
 
-#### **Scene 5: Встреча с клиентом** (Meeting with Client)
-- 5 dialogue lines
-- Final scene with multiple approaches
-- Paid choice (30 diamonds) for manipulation route
-- Leads to episode summary
+#### **Сцена 5: Встреча с клиентом**
+- 5 реплик диалога
+- Финальная сцена с множеством подходов
+- Платный выбор (30 алмазов) для пути манипуляции
+- Ведёт к итогам эпизода
 
-## Features Demonstrated
+## Продемонстрированные функции
 
-✅ **Typewriter Effect** - Text appears letter by letter (80ms per character)
-✅ **Character Animations** - Fade in/out transitions
-✅ **Emotion Changes** - Characters change sprites mid-scene
-✅ **Progress Indicator** - Shows current line / total lines
-✅ **Multiple Choice Types:**
-  - 🆓 Free choices (normal)
-  - 💎 Paid choices (require diamonds)
-  - 🔒 Stat-locked choices (require specific stats)
-  - ✨ AI free actions (requires YandexGPT setup)
+✅ **Эффект печатной машинки** - Текст появляется буква за буквой (80мс/символ)
+✅ **Анимации персонажей** - Плавные переходы появления/исчезновения
+✅ **Смена эмоций** - Персонажи меняют спрайты в середине сцены
+✅ **Индикатор прогресса** - Показывает текущую реплику / всего реплик
+✅ **Множество типов выборов:**
+  - 🆓 Бесплатные выборы (обычные)
+  - 💎 Платные выборы (требуют алмазы)
+  - 🔒 Выборы с требованием статов (требуют определённые статы)
+  - ✨ AI свободные действия (требуется настройка YandexGPT)
 
-## Assets Used
+## Использованные ресурсы
 
-All scenes use only existing placeholders:
+Все сцены используют только существующие placeholders:
 
-### Backgrounds:
+### Фоны:
 - `/assets/backgrounds/agency_lobby.jpg`
 - `/assets/backgrounds/office_interior.jpg`
 - `/assets/backgrounds/office_desk.jpg`
 
-### Characters:
+### Персонажи:
 - `/assets/characters/anna-neutral.png`
 - `/assets/characters/anna-happy.png`
 - `/assets/characters/sec-neutral.png`
 - `/assets/characters/sec-smile.png`
 
-## For Your Artistic Team
+## Для вашей художественной команды
 
-When your team creates new assets, simply:
+Когда ваша команда создаст новые ресурсы, просто:
 
-1. Replace the image paths in `src/data/scenes.json`
-2. Follow this naming convention:
+1. Замените пути к изображениям в `src/data/scenes.json`
+2. Следуйте этому соглашению об именовании:
    ```
-   /assets/characters/[name]-[emotion].png
+   /assets/characters/[имя]-[эмоция].png
    ```
-   Examples: 
+   Примеры: 
    - `anna-worried.png`
    - `director-angry.png`
    - `partner-surprised.png`
 
-3. For backgrounds:
+3. Для фонов:
    ```
-   /assets/backgrounds/[location].jpg
+   /assets/backgrounds/[локация].jpg
    ```
 
-## Story Configuration
+## Конфигурация истории
 
-The demo story is configured in `src/data/stories.json`:
+Демо-история настроена в `src/data/stories.json`:
 
 ```json
 {
@@ -112,31 +112,30 @@ The demo story is configured in `src/data/stories.json`:
 }
 ```
 
-## Stat Effects Summary
+## Итоги эффектов статов
 
-Playing through all scenes can earn:
-- **Honesty**: 1-3 points per choice
-- **Cunning**: 1-4 points per choice
-- **Charm**: 1-3 points per choice
-- **Reputation**: -3 to +3 points per choice
+Прохождение всех сцен может принести:
+- **Честность**: 1-3 балла за выбор
+- **Хитрость**: 1-4 балла за выбор
+- **Обаяние**: 1-3 балла за выбор
+- **Репутация**: от -3 до +3 баллов за выбор
 
-## Next Steps
+## Следующие шаги
 
-1. ✅ Test the demo to verify dialogue system works
-2. ✅ Share with stakeholders for feedback
-3. 🎨 Wait for artistic team to create unique assets
-4. 📝 Write more scenes using `DIALOGUE_TEMPLATE.md`
-5. 🔄 Replace placeholder images with final art
+1. ✅ Протестируйте демо для проверки работы диалоговой системы
+2. ✅ Поделитесь с заинтересованными лицами для получения отзывов
+3. 🎨 Дождитесь, пока художественная команда создаст уникальные ресурсы
+4. 📝 Напишите больше сцен, используя `DIALOGUE_TEMPLATE.md`
+5. 🔄 Замените placeholder-изображения на финальную графику
 
-## Tips for Writing More Scenes
+## Советы по написанию дополнительных сцен
 
-- Keep dialogue lines to **1-3 sentences max**
-- Use **3-7 dialogue entries** per scene
-- Change character sprites to show emotions
-- Always include a **free action** option
-- Mix choice types (free, paid, stat-locked)
+- Держите реплики диалога в пределах **1-3 предложений максимум**
+- Используйте **3-7 реплик диалога** на сцену
+- Меняйте спрайты персонажей для отображения эмоций
+- Всегда включайте опцию **свободного действия**
+- Смешивайте типы выборов (бесплатные, платные, с требованием статов)
 
 ---
 
-**Created for quick preview while artistic team is working on assets!** 🚀
-
+**Создано для быстрого превью, пока художественная команда работает над ресурсами!** 🚀
