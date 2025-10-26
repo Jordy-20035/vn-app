@@ -73,28 +73,6 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
       {/* Background */}
       <div className="vn-bg" style={{ ...bgStyle, width: "100%", height: "100%", position: "absolute", inset: 0, zIndex: 0 }} />
 
-      {/* Stats HUD */}
-      <div 
-        className="vn-hud" 
-        style={{ 
-          position: "absolute", 
-          top: 10, 
-          left: 10,
-          background: 'rgba(0, 0, 0, 0.6)',
-          padding: '8px 12px',
-          borderRadius: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 4,
-          zIndex: 100,
-        }}
-      >
-        <div style={{ fontSize: 12 }}>⚖️ Честность: {stats.honesty ?? 0}</div>
-        <div style={{ fontSize: 12 }}>🎭 Хитрость: {stats.cunning ?? 0}</div>
-        <div style={{ fontSize: 12 }}>⭐ Репутация: {stats.reputation ?? 0}</div>
-        <div style={{ fontSize: 12 }}>💎 Обаяние: {stats.charm ?? 0}</div>
-      </div>
-
       {/* Step-by-step dialogue viewer */}
       {scene.dialogue && !dialogueComplete && (
         <DialogueViewer
@@ -159,7 +137,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
                 color: '#fbbf24'
               }}>
                 {scene.speaker}
-              </div>
+        </div>
             )}
 
             {/* Title (for legacy scenes) */}
@@ -185,7 +163,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
                 const isStatLocked = choice.requiredStats;
                 const isDisabled = (!availability.available && isPaid) || isProcessing;
 
-                return (
+                  return (
                   <button
                     key={choice.id}
                     className="vn-btn"
@@ -244,10 +222,10 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
                 animation: 'blink 1s infinite',
               }}>
                 Обработка...
-              </div>
-            )}
           </div>
+            )}
         </div>
+      </div>
       )}
     </div>
   );

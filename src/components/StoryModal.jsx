@@ -6,7 +6,7 @@ import { useTelegram } from '../contexts/TelegramContext';
  * StoryModal - Expandable story card with detailed info
  */
 export default function StoryModal({ story, onPlay, onClose, onManageProgress }) {
-  const { storyProgress } = useGame();
+  const { storyProgress, stats } = useGame();
   const { hapticFeedback } = useTelegram();
 
   if (!story) return null;
@@ -34,6 +34,23 @@ export default function StoryModal({ story, onPlay, onClose, onManageProgress })
 
           {/* Info overlay */}
           <div className="story-modal-info">
+            {/* Player Stats */}
+            <div style={{ 
+              display: 'flex', 
+              gap: 12, 
+              marginBottom: 12,
+              padding: '8px 12px',
+              background: 'rgba(0, 0, 0, 0.4)',
+              borderRadius: 8,
+              fontSize: 12,
+              flexWrap: 'wrap',
+            }}>
+              <div>⚖️ Честность: {stats.honesty ?? 0}</div>
+              <div>🎭 Хитрость: {stats.cunning ?? 0}</div>
+              <div>⭐ Репутация: {stats.reputation ?? 0}</div>
+              <div>💎 Обаяние: {stats.charm ?? 0}</div>
+            </div>
+
             {/* Episode count */}
             <div className="story-modal-series">
               Серия {completedCount + 1}/{totalEpisodes}
