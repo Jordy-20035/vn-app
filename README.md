@@ -85,7 +85,7 @@
 
 ```bash
 # Клонируйте репозиторий
-git clone <your-repo-url>
+git clone https://github.com/Jordy-20035/vn-app/
 cd vn-app
 
 # Установите зависимости
@@ -509,15 +509,10 @@ npm run preview  # Предпросмотр сборки
 ## 🎯 Для хакатона
 
 ### Демо
-- **Telegram Bot:** `@your_bot_username`
-- **Mini App URL:** `https://t.me/your_bot/your_app`
-- **Web версия:** `https://your-vercel-app.vercel.app`
+- **Telegram Bot:** `@alterrrabot`
+- **Mini App URL:** `https://t.me/alterrrabot/alterra`
+- **Web версия:** `https://vn-app-git-main-jordy-20035s-projects.vercel.app/`
 
-### Презентационные материалы
-1. Видео демо (2-3 минуты)
-2. Скриншоты основных экранов
-3. Описание технического стека
-4. Метрики (если есть тестирование)
 
 ---
 
@@ -536,7 +531,7 @@ MIT License
 ## 📞 Поддержка
 
 Если у вас возникли вопросы:
-- Telegram: [@alterra_support](https://t.me/alterra_support)
+- Telegram: [@alterra_support](https://t.me/Jo_Unnie)
 - GitHub Issues
 
 ---
