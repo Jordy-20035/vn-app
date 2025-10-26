@@ -1,4 +1,393 @@
 {
+  "demo_scene_001": {
+    "id": "demo_scene_001",
+    "title": "Утро в офисе",
+    "image": "/assets/backgrounds/agency_lobby.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Анна",
+        "text": "Ещё один понедельник. Надеюсь, сегодня будет проще, чем на прошлой неделе.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Доброе утро, Анна! У вас сегодня встреча с новым клиентом в 10:00. Кофе?",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-smile.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "О, спасибо! Что за клиент? Я не видела информации в календаре.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Детали конфиденциальные. Директор скажет больше, когда спустится.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      {
+        "id": "accept_meeting",
+        "label": "Принять встречу без вопросов",
+        "goto": "demo_scene_002",
+        "effects": { "honesty": 1 }
+      },
+      {
+        "id": "demand_info",
+        "label": "Настоять на получении информации сейчас",
+        "goto": "demo_scene_003",
+        "effects": { "cunning": 1 }
+      },
+      {
+        "id": "bribe_secretary",
+        "label": "💎 Подкупить секретаря за информацию (20 💎)",
+        "goto": "demo_scene_004",
+        "cost": 20,
+        "effects": { "cunning": 2, "reputation": -1 }
+      },
+      {
+        "id": "free_action",
+        "label": "✨ Свободное действие...",
+        "free": true
+      }
+    ],
+    
+    "meta": { "locId": "agency_lobby" }
+  },
+
+  "demo_scene_002": {
+    "id": "demo_scene_002",
+    "title": "Подготовка к встрече",
+    "image": "/assets/backgrounds/office_interior.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Анна",
+        "text": "Хорошо, у меня есть пара часов. Пойду подготовлюсь и просмотрю старые дела.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Умница! Кстати, клиент, кажется, очень важная персона. Будьте на высоте!",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-smile.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Спасибо за предупреждение. Я справлюсь.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-happy.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      {
+        "id": "research_client",
+        "label": "Провести исследование клиента",
+        "goto": "demo_scene_005",
+        "effects": { "cunning": 1, "charm": 1 }
+      },
+      {
+        "id": "relax_prepare",
+        "label": "Выпить кофе и расслабиться",
+        "goto": "demo_scene_005",
+        "effects": { "charm": 1 }
+      },
+      {
+        "id": "skip_meeting",
+        "label": "Сказаться больной и избежать встречи",
+        "goto": "demo_scene_003",
+        "effects": { "cunning": 2, "reputation": -2 }
+      },
+      {
+        "id": "free_action",
+        "label": "✨ Свободное действие...",
+        "free": true
+      }
+    ],
+    
+    "meta": { "locId": "agency_office" }
+  },
+
+  "demo_scene_003": {
+    "id": "demo_scene_003",
+    "title": "Конфронтация",
+    "image": "/assets/backgrounds/office_desk.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Анна",
+        "text": "Послушайте, я не могу работать вслепую. Мне нужны детали, иначе я не смогу помочь клиенту.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Я понимаю вашу позицию, но... Хорошо. Клиент - это господин Волков. Дело касается пропавшего наследства.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Волков? Тот самый из новостей? Интересно...",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-happy.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Только никому ни слова! Это строго конфиденциально.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-smile.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      {
+        "id": "promise_secrecy",
+        "label": "Пообещать сохранить секрет",
+        "goto": "demo_scene_005",
+        "effects": { "honesty": 2, "charm": 1 }
+      },
+      {
+        "id": "use_info",
+        "label": "🔒 Использовать информацию в своих целях (Хитрость ≥ 3)",
+        "goto": "demo_scene_004",
+        "requiredStats": { "cunning": 3 },
+        "effects": { "cunning": 3, "reputation": -2 }
+      },
+      {
+        "id": "share_info",
+        "label": "Рассказать коллегам о клиенте",
+        "goto": "demo_scene_004",
+        "effects": { "reputation": -3, "cunning": 1 }
+      },
+      {
+        "id": "free_action",
+        "label": "✨ Свободное действие...",
+        "free": true
+      }
+    ],
+    
+    "meta": { "locId": "agency_desk" }
+  },
+
+  "demo_scene_004": {
+    "id": "demo_scene_004",
+    "title": "Неожиданный поворот",
+    "image": "/assets/backgrounds/office_interior.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Секретарь",
+        "text": "Анна, я... Я не могу так больше. Директор узнал о нашем разговоре.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Что?! Как он узнал? Я никому не говорила!",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "В офисе камеры... Я забыла. Он хочет вас видеть. Сейчас.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Чёрт. Ну что же, придётся объясняться.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-happy.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      {
+        "id": "face_director",
+        "label": "Пойти к директору и объяснить всё честно",
+        "goto": "demo_scene_005",
+        "effects": { "honesty": 3, "reputation": 1 }
+      },
+      {
+        "id": "blame_secretary",
+        "label": "Свалить вину на секретаря",
+        "goto": "demo_scene_005",
+        "effects": { "cunning": 3, "reputation": -3 }
+      },
+      {
+        "id": "charm_way_out",
+        "label": "🔒 Обаять директора и выкрутиться (Обаяние ≥ 5)",
+        "goto": "demo_scene_005",
+        "requiredStats": { "charm": 5 },
+        "effects": { "charm": 2, "reputation": 2 }
+      },
+      {
+        "id": "free_action",
+        "label": "✨ Свободное действие...",
+        "free": true
+      }
+    ],
+    
+    "meta": { "locId": "agency_office" }
+  },
+
+  "demo_scene_005": {
+    "id": "demo_scene_005",
+    "title": "Встреча с клиентом",
+    "image": "/assets/backgrounds/agency_lobby.jpg",
+    
+    "dialogue": [
+      {
+        "speaker": "Анна",
+        "text": "Добрый день, господин Волков. Рада, что вы выбрали наше агентство.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-happy.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Клиент уже в переговорной. Он выглядит... обеспокоенным.",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-neutral.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Понятно. Тогда начнём. Время - деньги.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-neutral.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Секретарь",
+        "text": "Удачи, Анна. Я знаю, ты справишься!",
+        "character": {
+          "id": "secretary",
+          "image": "/assets/characters/sec-smile.png",
+          "x": "75%",
+          "scale": 1.0
+        }
+      },
+      {
+        "speaker": "Анна",
+        "text": "Спасибо. Я сделаю всё, что в моих силах.",
+        "character": {
+          "id": "anna",
+          "image": "/assets/characters/anna-happy.png",
+          "x": "5%",
+          "scale": 1.0
+        }
+      }
+    ],
+    
+    "choices": [
+      {
+        "id": "professional_approach",
+        "label": "Начать с профессионального подхода",
+        "goto": "episode_end",
+        "effects": { "honesty": 2, "reputation": 3, "charm": 1 }
+      },
+      {
+        "id": "personal_approach",
+        "label": "Начать с личного разговора",
+        "goto": "episode_end",
+        "effects": { "charm": 3, "reputation": 2 }
+      },
+      {
+        "id": "manipulative_approach",
+        "label": "💎 Использовать манипуляции (30 💎)",
+        "goto": "episode_end",
+        "cost": 30,
+        "effects": { "cunning": 4, "reputation": 1 }
+      },
+      {
+        "id": "free_action",
+        "label": "✨ Свободное действие...",
+        "free": true
+      }
+    ],
+    
+    "meta": { "locId": "agency_lobby" }
+  },
+
   "scene_001": {
     "id": "scene_001",
     "title": "Вход в агентство",
