@@ -509,9 +509,9 @@ npm run preview  # Предпросмотр сборки
 ## 🎯 Для хакатона
 
 ### Демо
-- **Telegram Bot:** `@your_bot_username`
-- **Mini App URL:** `https://t.me/your_bot/your_app`
-- **Web версия:** `https://your-vercel-app.vercel.app`
+- **Telegram Bot:** `@alterrrabot`
+- **Mini App URL:** `https://t.me/alterrrabot/alterra`
+- **Web версия:** `[https://your-vercel-app.vercel.app](https://vn-app-git-main-jordy-20035s-projects.vercel.app/)`
 
 ### Презентационные материалы
 1. Видео демо (2-3 минуты)
