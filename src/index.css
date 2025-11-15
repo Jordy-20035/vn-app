@@ -382,7 +382,7 @@ body, html, #root {
 
 /* === Фон каталога === */
 .app-container {
-  background-image: url("./assets/bg-catalog.jpg");
+  background-image: url("/assets/bg-catalog.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

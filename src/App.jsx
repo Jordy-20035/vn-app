@@ -31,7 +31,6 @@ function Splash() {
     <div className="splash-root">
       <img src={splashBg} alt="Фон" className="splash-bg" />
       <div className="splash-box">
-        <div className="splash-logo">Alterra</div>
         <div className="splash-sub">Твой выбор создаёт реальность...</div>
         <div className="splash-spinner" />
       </div>
@@ -217,6 +216,7 @@ function App() {
     watchAd,
     updateStats,
     completeEpisode,
+    getAdCooldownTime,
     COINS_AD_AMOUNT,
     COINS_EPISODE_REWARD,
   } = useGame();
@@ -486,16 +486,22 @@ function App() {
 
   // Handle bonus ad
   const handleBonusAd = () => {
-    if (watchAd()) {
-      setShowAdScreen('bonus');
-    } else {
-      showAlert("Бонусная реклама пока недоступна. Подождите немного.");
+    const adCooldown = getAdCooldownTime();
+    if (adCooldown > 0) {
+      const hours = Math.floor(adCooldown / (60 * 60 * 1000));
+      const minutes = Math.floor((adCooldown % (60 * 60 * 1000)) / (60 * 1000));
+      showAlert(`Бонусная реклама будет доступна через ${hours}:${minutes.toString().padStart(2, '0')}`);
+      return;
     }
+    setShowAdScreen('bonus');
   };
 
   const handleBonusAdComplete = () => {
     setShowAdScreen(null);
-    setToast({ message: `Получено ${COINS_AD_AMOUNT} 💎 за просмотр рекламы!`, type: "success" });
+    // Reward is given after ad is watched
+    if (watchAd()) {
+      setToast({ message: `Получено ${COINS_AD_AMOUNT} 💎 за просмотр рекламы!`, type: "success" });
+    }
   };
 
   // Back from scene
@@ -729,9 +735,39 @@ export default function AppWrapper() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Preload images
-    const timeout = new Promise((res) => setTimeout(res, 1500));
-    timeout.then(() => setReady(true));
+    // Preload all story images and assets
+    const preloadImages = () => {
+      const imagesToPreload = [];
+      
+      // Preload story covers
+      storiesData.stories.forEach(story => {
+        if (story.cover) imagesToPreload.push(story.cover);
+        if (story.tomeSplash) imagesToPreload.push(story.tomeSplash);
+      });
+      
+      // Preload catalog background
+      imagesToPreload.push('/assets/bg-catalog.jpg');
+      
+      // Preload all images
+      const promises = imagesToPreload.map(src => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = resolve; // Continue even if image fails
+          img.src = src;
+        });
+      });
+      
+      return Promise.all(promises);
+    };
+    
+    // Preload images and wait minimum 1.5 seconds for smooth transition
+    Promise.all([
+      preloadImages(),
+      new Promise(resolve => setTimeout(resolve, 1500))
+    ]).then(() => {
+      setReady(true);
+    });
   }, []);
 
   if (!ready) return <Splash />;

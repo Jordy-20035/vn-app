@@ -1,24 +1,6 @@
 {
   "stories": [
     {
-      "id": "story_demo",
-      "title": "🎭 ДЕМО: Офисные интриги",
-      "cover": "/assets/first-story-cover.png",
-      "tomeSplash": "/assets/first-story-cover.png",
-      "tome": 1,
-      "annotation": "Демо-история для презентации диалоговой системы. Следите за Анной в её первый рабочий день в детективном агентстве.",
-      "episodesCount": 1,
-      "locked": false,
-      "startSceneId": "demo_scene_001",
-      "episodes": [
-        {
-          "id": "demo_ep_1",
-          "title": "Демо: Первый день",
-          "sceneIds": ["demo_scene_001", "demo_scene_002", "demo_scene_003", "demo_scene_004", "demo_scene_005"]
-        }
-      ]
-    },
-    {
       "id": "story_1",
       "title": "Пешки не ходят назад",
       "cover": "/assets/first-story-cover.png",
