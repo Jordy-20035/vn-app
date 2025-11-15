@@ -68,7 +68,6 @@ body, html, #root {
 .app-container {
   width: 100%;
   min-height: 100vh;
-  background: #f6f7f8;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -383,6 +382,7 @@ body, html, #root {
 /* === Фон каталога === */
 .app-container {
   background-image: url("/assets/bg-catalog.jpg");
+  background-color: #f6f7f8; /* Fallback color */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -184,11 +184,7 @@ export default function Shop({ onClose }) {
               gap: 6,
             }}
           >
-            <img 
-              src="/assets/ui/rubies-icon.png" 
-              alt="Рубины" 
-              style={{ width: 20, height: 20 }}
-            />
+            <span style={{ fontSize: 18 }}>💎</span>
             Рубины
           </button>
           <button
@@ -209,11 +205,7 @@ export default function Shop({ onClose }) {
               gap: 6,
             }}
           >
-            <img 
-              src="/assets/ui/energy-icon.png" 
-              alt="Энергия" 
-              style={{ width: 20, height: 20 }}
-            />
+            <span style={{ fontSize: 18 }}>⚡</span>
             Энергия
           </button>
         </div>
@@ -289,7 +281,7 @@ export default function Shop({ onClose }) {
                         gap: 8,
                         width: 'fit-content'
                       }}>
-                        <img src="/assets/ui/rubies-icon.png" alt="Рубины" style={{ width: 20, height: 20 }} />
+                        <span style={{ fontSize: 18 }}>💎</span>
                         <span style={{ fontSize: 16, fontWeight: 700, color: '#8B0000' }}>{pack.rubies}</span>
                       </div>
                     )}
@@ -303,7 +295,7 @@ export default function Shop({ onClose }) {
                         gap: 8,
                         width: 'fit-content'
                       }}>
-                        <img src="/assets/ui/energy-icon.png" alt="Энергия" style={{ width: 20, height: 20 }} />
+                        <span style={{ fontSize: 18 }}>⚡</span>
                         <span style={{ fontSize: 16, fontWeight: 700, color: '#8B0000' }}>{pack.energy}</span>
                       </div>
                     )}

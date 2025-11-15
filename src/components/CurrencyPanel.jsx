@@ -61,6 +61,7 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           cursor: 'pointer',
           position: 'relative',
           backgroundImage: 'url(/assets/ui/energy-counter-bg.png)',
+          backgroundColor: 'rgba(139, 0, 0, 0.8)', // Fallback
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
@@ -70,13 +71,11 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '0 12px',
+          borderRadius: 20,
+          border: '1px solid rgba(255,255,255,0.2)',
         }}
       >
-        <img 
-          src="/assets/ui/energy-icon.png" 
-          alt="Энергия" 
-          style={{ width: 24, height: 24, marginRight: 6 }}
-        />
+        <span style={{ fontSize: 20, marginRight: 6 }}>⚡</span>
         <span style={{ 
           fontSize: 16, 
           fontWeight: 700, 
@@ -107,6 +106,7 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           cursor: 'pointer',
           position: 'relative',
           backgroundImage: 'url(/assets/ui/rubies-counter-bg.png)',
+          backgroundColor: 'rgba(139, 0, 0, 0.8)', // Fallback
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
@@ -116,13 +116,11 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '0 12px',
+          borderRadius: 20,
+          border: '1px solid rgba(255,255,255,0.2)',
         }}
       >
-        <img 
-          src="/assets/ui/rubies-icon.png" 
-          alt="Рубины" 
-          style={{ width: 24, height: 24, marginRight: 6 }}
-        />
+        <span style={{ fontSize: 20, marginRight: 6 }}>💎</span>
         <span style={{ 
           fontSize: 16, 
           fontWeight: 700, 
@@ -150,6 +148,7 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           style={{
             position: 'relative',
             backgroundImage: 'url(/assets/ui/ad-bonus-bg.png)',
+            backgroundColor: 'rgba(139, 0, 0, 0.9)', // Fallback
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -159,6 +158,8 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '0 12px',
+            borderRadius: 20,
+            border: '1px solid rgba(255,255,255,0.2)',
           }}
         >
           <span style={{ 
@@ -170,11 +171,7 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           }}>
             Реклама +2
           </span>
-          <img 
-            src="/assets/ui/rubies-icon.png" 
-            alt="Рубины" 
-            style={{ width: 20, height: 20 }}
-          />
+          <span style={{ fontSize: 18 }}>💎</span>
           {!adReady && adTimer && (
             <div style={{ 
               position: 'absolute',
