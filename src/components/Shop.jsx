@@ -52,7 +52,7 @@ export default function Shop({ onClose }) {
       rubies: 150, 
       stars: 379, 
       title: 'Лучшая выгода',
-      image: '/assets/ui/shop-best-chest.png',
+      image: '/assets/ui/shop-energy-bolt.png',
       isBest: true
     },
     { 
@@ -67,7 +67,7 @@ export default function Shop({ onClose }) {
       rubies: 20, 
       stars: 79, 
       title: 'Малый пакет',
-      image: '/assets/ui/shop-small-chest.png'
+      image: '/assets/ui/shop-beginner-chest.png'
     },
   ];
 
@@ -79,7 +79,7 @@ export default function Shop({ onClose }) {
       energy: 3, 
       stars: 139, 
       title: 'Для начинающих',
-      image: '/assets/ui/shop-beginner-chest.png',
+      image: '/assets/ui/shop-small-energy.png',
       isBeginner: true
     },
     { 
@@ -87,7 +87,7 @@ export default function Shop({ onClose }) {
       energy: 150, 
       stars: 1199, 
       title: 'Лучшая выгода',
-      image: '/assets/ui/shop-energy-bolt.png',
+      image: '/assets/ui/shop-best-energy.png',
       isBest: true
     },
     { 
@@ -95,14 +95,14 @@ export default function Shop({ onClose }) {
       energy: 10, 
       stars: 79, 
       title: 'Средний пакет',
-      image: '/assets/ui/shop-energy-bolt.png'
+      image: '/assets/ui/shop-medium-energy.png'
     },
     { 
       id: 'energy_small', 
       energy: 5, 
       stars: 49, 
       title: 'Малый пакет',
-      image: '/assets/ui/shop-energy-bolt.png'
+      image: '/assets/ui/shop-small-energy.png'
     },
   ];
 
