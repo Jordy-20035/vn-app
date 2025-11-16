@@ -36,7 +36,7 @@ export default function Shop({ onClose }) {
   const { addCoins, spendEnergy } = useGame();
   const [activeTab, setActiveTab] = useState('rubies'); // 'rubies' or 'energy'
 
-  // Rubies packages
+  // Rubины
   const rubiesPackages = [
     { 
       id: 'rubies_beginner', 
@@ -46,6 +46,13 @@ export default function Shop({ onClose }) {
       title: 'Для начинающих',
       image: '/assets/ui/shop-beginner-chest.png',
       isBeginner: true
+    },
+    {
+      id: 'rubies_big',
+      rubies: 300,
+      stars: 699,
+      title: 'Большой пакет',
+      image: '/assets/ui/shop-best-chest.png'
     },
     { 
       id: 'rubies_best', 
@@ -71,7 +78,7 @@ export default function Shop({ onClose }) {
     },
   ];
 
-  // Energy packages
+  // Энергия
   const energyPackages = [
     { 
       id: 'energy_beginner', 
@@ -82,12 +89,19 @@ export default function Shop({ onClose }) {
       image: '/assets/ui/shop-energy-bolt.png',
       isBeginner: true
     },
+    {
+      id: 'energy_big',
+      energy: 50,
+      stars: 399,
+      title: 'Большой пакет',
+      image: '/assets/ui/shop-energy-bolt.png'
+    },
     { 
       id: 'energy_best', 
       energy: 150, 
       stars: 1199, 
       title: 'Лучшая выгода',
-      image: '/assets/ui/shop-best-energy.png',
+      image: '/assets/ui/shop-energy-bolt.png',
       isBest: true
     },
     { 
@@ -129,8 +143,6 @@ export default function Shop({ onClose }) {
   };
 
   const currentPackages = activeTab === 'rubies' ? rubiesPackages : energyPackages;
-  const featuredPack = currentPackages.find(p => p.isBest);
-  const otherPacks = currentPackages.filter(p => !p.isBest);
 
   return (
     <div
@@ -241,112 +253,9 @@ export default function Shop({ onClose }) {
           </button>
         </div>
 
-        {/* Featured (Лучшая выгода) */}
-        {featuredPack && (
-          <div style={{ marginBottom: 16 }}>
-            <div style={{ 
-              color: '#fff', 
-              fontWeight: 800, 
-              fontSize: 16, 
-              margin: '0 0 8px 2px' 
-            }}>
-              Лучшая выгода
-            </div>
-            <div
-              style={{
-                position: 'relative',
-                background: 'linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(101, 0, 0, 0.95) 100%)',
-                borderRadius: 16,
-                padding: 18,
-                cursor: 'pointer',
-                border: '2px solid #FFD700',
-                boxShadow: '0 6px 16px rgba(0,0,0,0.35)',
-              }}
-              onClick={() => handlePurchase(featuredPack)}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{ flexShrink: 0 }}>
-                  <img 
-                    src={featuredPack.image} 
-                    alt={featuredPack.title}
-                    style={{ width: 110, height: 110, objectFit: 'contain' }}
-                  />
-                </div>
-
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#fff' }}>
-                    {featuredPack.title}
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'row', gap: 10, flexWrap: 'wrap' }}>
-                    {featuredPack.rubies && (
-                      <div style={{ 
-                        background: '#fff', 
-                        borderRadius: 10, 
-                        padding: '8px 14px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        width: 'fit-content'
-                      }}>
-                        <span style={{ display: 'flex', alignItems: 'center' }}>
-                          <RubyIcon size={20} />
-                        </span>
-                        <span style={{ fontSize: 18, fontWeight: 800, color: '#8B0000' }}>{featuredPack.rubies}</span>
-                      </div>
-                    )}
-                    {featuredPack.energy && (
-                      <div style={{ 
-                        background: '#fff', 
-                        borderRadius: 10, 
-                        padding: '8px 14px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        width: 'fit-content'
-                      }}>
-                        <span style={{ display: 'flex', alignItems: 'center' }}>
-                          <EnergyIcon size={20} />
-                        </span>
-                        <span style={{ fontSize: 18, fontWeight: 800, color: '#8B0000' }}>{featuredPack.energy}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <button
-                    style={{
-                      background: 'linear-gradient(135deg, #FF69B4 0%, #FF1493 100%)',
-                      border: 'none',
-                      borderRadius: 10,
-                      padding: '10px 16px',
-                      color: '#fff',
-                      fontWeight: 800,
-                      fontSize: 15,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 6,
-                      width: 'fit-content',
-                      boxShadow: '0 2px 10px rgba(0,0,0,0.25)',
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handlePurchase(featuredPack);
-                    }}
-                  >
-                    <span>⭐</span>
-                    <span>{featuredPack.stars}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Other packages */}
+        {/* Packages */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {otherPacks.map((pack) => (
+          {currentPackages.map((pack) => (
             <div
               key={pack.id}
               style={{
