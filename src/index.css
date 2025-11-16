@@ -465,6 +465,7 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   position: relative;
+  padding-right: 64px; /* резерв под кнопку меню справа, чтобы не перекрывала бонус */
 }
 
 /* контейнер для плашек (центр) */

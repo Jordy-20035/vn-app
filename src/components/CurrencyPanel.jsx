@@ -4,6 +4,31 @@ import { useGame } from '../contexts/GameContext';
 /**
  * CurrencyPanel - Displays energy and coins with new design plates
  */
+const EnergyIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M13.5 2L4 13.2h6l-1.5 8.8L20 10.8h-6l-0.5-8.8z" fill="url(#boltGrad)"/>
+    <defs>
+      <linearGradient id="boltGrad" x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#FFD54F"/>
+        <stop offset="1" stopColor="#FFA000"/>
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+const RubyIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M12 3l4.5 2 3.5 5-8 11-8-11 3.5-5L12 3z" fill="url(#rubyGrad)" />
+    <path d="M12 3l4.5 2-4.5 4L7.5 5 12 3z" fill="rgba(255,255,255,0.5)"/>
+    <defs>
+      <linearGradient id="rubyGrad" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#FF7A7A"/>
+        <stop offset="1" stopColor="#D31F3A"/>
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 export default function CurrencyPanel({ onAdClick, onShopClick }) {
   const { 
     energy, 
@@ -75,7 +100,9 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           border: '1px solid rgba(255,255,255,0.2)',
         }}
       >
-        <span style={{ fontSize: 20, marginRight: 6 }}>⚡</span>
+        <span style={{ display: 'flex', alignItems: 'center', marginRight: 6 }}>
+          <EnergyIcon size={20} />
+        </span>
         <span style={{ 
           fontSize: 16, 
           fontWeight: 700, 
@@ -120,7 +147,9 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           border: '1px solid rgba(255,255,255,0.2)',
         }}
       >
-        <span style={{ fontSize: 20, marginRight: 6 }}>💎</span>
+        <span style={{ display: 'flex', alignItems: 'center', marginRight: 6 }}>
+          <RubyIcon size={20} />
+        </span>
         <span style={{ 
           fontSize: 16, 
           fontWeight: 700, 
@@ -171,7 +200,9 @@ export default function CurrencyPanel({ onAdClick, onShopClick }) {
           }}>
             Реклама +2
           </span>
-          <span style={{ fontSize: 18 }}>💎</span>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <RubyIcon size={18} />
+          </span>
           {!adReady && adTimer && (
             <div style={{ 
               position: 'absolute',
