@@ -74,7 +74,7 @@ export default function Shop({ onClose }) {
       rubies: 20, 
       stars: 79, 
       title: 'Малый пакет',
-      image: '/assets/ui/shop-small-chest.png'
+      image: '/assets/ui/shop-beginner-chest.png'
     },
   ];
 

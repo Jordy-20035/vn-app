@@ -31,7 +31,6 @@ function Splash() {
     <div className="splash-root">
       <img src={splashBg} alt="Фон" className="splash-bg" />
       <div className="splash-box">
-        <div className="splash-sub">Твой выбор создаёт реальность...</div>
         <div className="splash-spinner" />
       </div>
     </div>

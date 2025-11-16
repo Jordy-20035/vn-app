@@ -366,12 +366,14 @@ body, html, #root {
   margin-bottom: 14px;
 }
 .splash-spinner {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.12);
-  border-top-color: #fff;
-  animation: spin 1s linear infinite;
+  border: 4px solid transparent;
+  border-top-color: #ffd166;      /* теплый янтарный */
+  border-right-color: #ff6b6b;    /* коралловый акцент */
+  box-shadow: 0 0 12px rgba(255, 219, 112, 0.35);
+  animation: spin .8s linear infinite;
 }
 @keyframes spin {
   to {
@@ -433,13 +435,15 @@ body, html, #root {
 }
 
 .splash-spinner {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   margin: 0 auto;
-  border: 4px solid #ccc;
-  border-top-color: #333; /* цвет вращающейся полоски */
+  border: 4px solid transparent;
+  border-top-color: #ffd166;
+  border-right-color: #ff6b6b;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  box-shadow: 0 0 12px rgba(255, 219, 112, 0.35);
+  animation: spin .8s linear infinite;
 }
 
 @keyframes spin {
