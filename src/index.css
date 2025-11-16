@@ -381,7 +381,8 @@ body, html, #root {
 
 /* === Фон каталога === */
 .app-container {
-  background-image: url("/assets/bg-catalog.jpg");
+  /* cache-busted to force refresh after asset change */
+  background-image: url("/assets/bg-catalog.jpg?v=2");
   background-color: #f6f7f8; /* Fallback color */
   background-size: cover;
   background-position: center;
