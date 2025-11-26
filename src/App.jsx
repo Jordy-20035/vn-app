@@ -10,6 +10,8 @@ import ProgressManager from "./components/ProgressManager";
 import AdScreen from "./components/AdScreen";
 import EpisodeSummary from "./components/EpisodeSummary";
 import Toast from "./components/Toast";
+import PromoCodeModal from "./components/PromoCodeModal";
+import DailyReward from "./components/DailyReward";
 import storiesData from "./data/stories.json";
 import scenesData from "./data/scenes.json";
 
@@ -225,6 +227,30 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const [showProgressManager, setShowProgressManager] = useState(null);
+  const { user } = useTelegram();
+  const [showPromoCode, setShowPromoCode] = useState(false);
+  const [showDailyReward, setShowDailyReward] = useState(false);
+  
+  // Check for daily reward on mount
+  useEffect(() => {
+    if (user?.id) {
+      const saved = localStorage.getItem(`daily_reward_${user.id}`);
+      if (saved) {
+        const data = JSON.parse(saved);
+        const lastClaim = new Date(data.lastClaim);
+        const now = new Date();
+        const isNewDay = now.toDateString() !== lastClaim.toDateString();
+        if (isNewDay) {
+          setTimeout(() => setShowDailyReward(true), 500);
+        }
+      } else {
+        setTimeout(() => setShowDailyReward(true), 500);
+      }
+    } else {
+      // Dev mode
+      setTimeout(() => setShowDailyReward(true), 500);
+    }
+  }, [user]);
   
   // Chapter loading
   const [chapterLoading, setChapterLoading] = useState(false);
@@ -625,6 +651,18 @@ function App() {
         />
       )}
 
+      {/* Promo Code Modal */}
+      <PromoCodeModal
+        isOpen={showPromoCode}
+        onClose={() => setShowPromoCode(false)}
+      />
+
+      {/* Daily Reward */}
+      <DailyReward
+        isOpen={showDailyReward}
+        onClose={() => setShowDailyReward(false)}
+      />
+
     <div className="app-inner">
         {/* Header */}
         <header className="app-header">
@@ -658,23 +696,32 @@ function App() {
                 setShowMenu(false);
               }}
             >
-              💎 Магазин
+              Магазин
             </button>
             <button
               className="menu-item"
               onClick={() => {
-                showAlert("Следите за нами в социальных сетях!");
+                setShowPromoCode(true);
                 setShowMenu(false);
               }}
             >
-              📱 Мы в соц.сетях
+              Промокод
+            </button>
+            <button
+              className="menu-item"
+              onClick={() => {
+                window.open("https://alterra-site.netlify.app/", "_blank");
+                setShowMenu(false);
+              }}
+            >
+              О нас
             </button>
             <div className="menu-separator" />
             <div className="menu-contact">Контакты</div>
             <button
               className="menu-item"
               onClick={() => {
-                window.open("https://t.me/alterrrabot", "_blank");
+                window.open("https://t.me/alterra_app", "_blank");
                 setShowMenu(false);
               }}
             >
@@ -683,7 +730,7 @@ function App() {
             <button
               className="menu-item"
               onClick={() => {
-                window.location.href = "mailto:manyejordana@gmail.com";
+                window.location.href = "mailto:artvaib@yandex.ru";
                 setShowMenu(false);
               }}
             >

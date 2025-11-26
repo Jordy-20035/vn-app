@@ -3,7 +3,7 @@ import { useTelegram } from './TelegramContext';
 
 const GameContext = createContext(null);
 
-const ENERGY_MAX = 4;
+const ENERGY_MAX = 3;
 const ENERGY_REGEN_TIME = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
 const COINS_AD_AMOUNT = 2;
 const COINS_AD_COOLDOWN = 1.5 * 60 * 60 * 1000; // 1.5 hours
