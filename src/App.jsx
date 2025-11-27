@@ -543,15 +543,51 @@ function App() {
     );
   };
 
+  // Helper function to resolve scene redirects (goto)
+  const resolveScene = (sceneId, visited = new Set()) => {
+    if (!sceneId || visited.has(sceneId)) {
+      // Prevent infinite loops
+      console.warn('Scene redirect loop detected or invalid scene:', sceneId);
+      return null;
+    }
+    
+    const scene = scenes[sceneId];
+    if (!scene) {
+      console.warn('Scene not found:', sceneId);
+      return null;
+    }
+    
+    // If scene has a goto property and no image/dialogue/text, follow the redirect
+    if (scene.goto && !scene.image && !scene.dialogue && !scene.text && !scene.characters) {
+      console.log('Following scene redirect:', sceneId, '->', scene.goto);
+      visited.add(sceneId);
+      return resolveScene(scene.goto, visited);
+    }
+    
+    return scene;
+  };
+
+  // Auto-resolve scene redirects when currentSceneId changes
+  useEffect(() => {
+    if (!currentSceneId) return;
+    
+    const scene = scenes[currentSceneId];
+    if (scene && scene.goto && !scene.image && !scene.dialogue && !scene.text && !scene.characters) {
+      console.log('Auto-resolving scene redirect:', currentSceneId, '->', scene.goto);
+      setCurrentSceneId(scene.goto);
+    }
+  }, [currentSceneId, scenes]);
+
   // Render scene viewer
   if (currentSceneId) {
-    const sceneObj = scenes[currentSceneId];
+    // Resolve scene (follow redirects if needed)
+    const sceneObj = resolveScene(currentSceneId);
 
     if (!sceneObj) {
       return (
         <div style={{ padding: 20 }}>
           <button onClick={handleBackFromScene}>← Назад</button>
-          <div>Загрузка сцены...</div>
+          <div>Загрузка сцены... (ID: {currentSceneId})</div>
         </div>
       );
     }
