@@ -215,7 +215,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '100%',
+            width: '90%',
             maxWidth: '600px',
             backgroundImage: 'url(/assets/ui/dialog_box_narrator.png)',
             backgroundSize: 'contain',
@@ -232,7 +232,6 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             flexDirection: 'column',
             minHeight: '140px', // Фиксированная минимальная высота
             maxHeight: '140px', // Фиксированная максимальная высота
-            width: '90%',
           }}
         >
           <p
