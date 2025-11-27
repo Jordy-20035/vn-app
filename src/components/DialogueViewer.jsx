@@ -59,12 +59,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
     }
   };
 
-  const handleClickAnywhere = (e) => {
-    // Only trigger if clicking on backdrop, not on character or UI elements
-    if (e.target === e.currentTarget) {
-      handleNext();
-    }
-  };
+  // Убрали handleClickAnywhere - сцены меняются только по кнопке "Далее"
 
   if (isComplete || !currentDialogue) {
     return null;
@@ -72,11 +67,9 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
 
   return (
     <div 
-      onClick={handleClickAnywhere}
       style={{
         position: 'fixed',
         inset: 0,
-        cursor: 'pointer',
         zIndex: 1,
       }}
     >
@@ -133,12 +126,14 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               fontSize: 14,
               fontWeight: 600,
               opacity: 0.9,
-              marginBottom: 6, // Немного выше текста (было 8)
-              marginTop: -1, // Небольшой сдвиг вверх
+              marginBottom: 4, // Выше текста
+              marginTop: -6, // Сдвиг вверх, чтобы было внутри окна
               color: '#fbbf24',
               flexShrink: 0,
               textAlign: 'left', // Вернули выравнивание влево
               paddingLeft: '8px', // Небольшой отступ вправо от левого края
+              position: 'relative',
+              zIndex: 2,
             }}
           >
             {currentDialogue.speaker}
@@ -244,7 +239,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             style={{
               margin: 0,
               lineHeight: 1.6,
-              fontSize: 15,
+              fontSize: 13, // Уменьшен размер текста для narrator
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
               whiteSpace: 'normal',
@@ -252,6 +247,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               overflow: 'hidden',
               textAlign: 'left',
               padding: '0 0 0 15px', // Сдвиг текста вправо
+              lineHeight: 1.5, // Немного уменьшен line-height
             }}
           >
             {displayedText}
