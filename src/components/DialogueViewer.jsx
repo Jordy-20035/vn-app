@@ -130,8 +130,8 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               marginTop: -6, // Сдвиг вверх, чтобы было внутри окна
               color: '#fbbf24',
               flexShrink: 0,
-              textAlign: 'right', // Выравнивание вправо
-              paddingRight: '16px', // Отступ справа
+              textAlign: 'left', // Выравнивание вправо
+              paddingRight: '10px', // Отступ справа
               position: 'relative',
               zIndex: 2,
             }}
