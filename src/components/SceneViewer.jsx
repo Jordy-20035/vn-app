@@ -20,9 +20,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
   if (!scene) return <div className="vn-empty" style={{ padding: 20 }}>Сцена не найдена</div>;
 
   // фоновое изображение
-  const bgStyle = scene.image
-    ? { backgroundImage: `url(${scene.image})`, backgroundSize: "cover", backgroundPosition: "center" }
-    : {};
+  console.log('SceneViewer - Scene:', scene.id, 'Image path:', scene.image);
 
   // Check if choice is available based on requirements
   const isChoiceAvailable = (choice) => {
@@ -71,7 +69,55 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
   return (
     <div style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
       {/* Background */}
-      <div className="vn-bg" style={{ ...bgStyle, width: "100%", height: "100%", position: "absolute", inset: 0, zIndex: 0 }} />
+      <div 
+        className="vn-bg" 
+        style={{ 
+          width: "100%", 
+          height: "100%", 
+          position: "absolute", 
+          inset: 0, 
+          zIndex: 0,
+          backgroundColor: '#1a1a1a'
+        }}
+      >
+        {scene.image && (
+          <img 
+            src={scene.image} 
+            alt="Scene background"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: 0
+            }}
+            onError={(e) => {
+              console.error('❌ Failed to load background image:', scene.image);
+              console.error('   Attempted URL:', window.location.origin + scene.image);
+              console.error('   Current location:', window.location.href);
+              e.target.style.display = 'none';
+            }}
+            onLoad={(e) => {
+              console.log('✅ Background image loaded successfully:', scene.image);
+            }}
+          />
+        )}
+        {scene.image && (
+          <div style={{
+            position: 'absolute',
+            bottom: 10,
+            left: 10,
+            color: 'white',
+            fontSize: '10px',
+            opacity: 0.5,
+            zIndex: 1000,
+            pointerEvents: 'none'
+          }}>
+            Debug: {scene.image}
+          </div>
+        )}
+      </div>
 
       {/* Step-by-step dialogue viewer */}
       {scene.dialogue && !dialogueComplete && (

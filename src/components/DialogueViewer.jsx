@@ -81,34 +81,43 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
       }}
     >
       {/* Character sprite - Левый край, огромный, от самого низа, z-index самый низкий */}
-      {currentDialogue.character && (
-        <div
-          key={currentDialogue.character.id}
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: currentDialogue.character.x || '-15%', // Левый край: -15% или -20%
-            height: '100vh', // Огромный, от самого низа экрана
-            width: 'auto',
-            zIndex: 1, // Самый низкий z-index (под кнопками)
-            pointerEvents: 'none',
-            animation: 'fadeIn 0.3s ease-in',
-          }}
-        >
-          <img
-            src={buildCharacterPath(currentDialogue.character)}
-            alt={currentDialogue.character.id}
+      {currentDialogue.character && (() => {
+        const charPath = buildCharacterPath(currentDialogue.character);
+        console.log('DialogueViewer - Character:', currentDialogue.character, 'Path:', charPath);
+        return (
+          <div
+            key={currentDialogue.character.id}
             style={{
-              height: '100%',
+              position: 'absolute',
+              bottom: 0,
+              left: currentDialogue.character.x || '-15%', // Левый край: -15% или -20%
+              height: '100vh', // Огромный, от самого низа экрана
               width: 'auto',
-              maxWidth: 'none',
-              objectFit: 'contain',
-              transform: `scale(${currentDialogue.character.scale || 1})`,
-              transformOrigin: 'bottom center',
+              zIndex: 1, // Самый низкий z-index (под кнопками)
+              pointerEvents: 'none',
+              animation: 'fadeIn 0.3s ease-in',
             }}
-          />
-        </div>
-      )}
+          >
+            <img
+              src={charPath}
+              alt={currentDialogue.character.id}
+              onError={(e) => {
+                console.error('Failed to load character image:', charPath, e);
+                e.target.style.display = 'none';
+              }}
+              onLoad={() => console.log('Character image loaded:', charPath)}
+              style={{
+                height: '100%',
+                width: 'auto',
+                maxWidth: 'none',
+                objectFit: 'contain',
+                transform: `scale(${currentDialogue.character.scale || 1})`,
+                transformOrigin: 'bottom center',
+              }}
+            />
+          </div>
+        );
+      })()}
 
       {/* Dialogue box - bottom: 32% (в процентах от высоты экрана), НЕ прилипает к низу */}
       {currentDialogue.speaker !== 'narrator' && (
