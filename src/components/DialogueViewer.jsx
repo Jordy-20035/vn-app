@@ -131,7 +131,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               color: '#fbbf24',
               flexShrink: 0,
               textAlign: 'left', // Выравнивание вправо
-              paddingRight: '10px', // Отступ справа
+              paddingRight: '24px', // Отступ справа
               position: 'relative',
               zIndex: 2,
             }}
