@@ -237,7 +237,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
           <p
             style={{
               margin: 0,
-              lineHeight: 1.6,
+              lineHeight: 1.5, // Немного уменьшен line-height для narrator
               fontSize: 13, // Уменьшен размер текста для narrator
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
@@ -246,7 +246,6 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               overflow: 'hidden',
               textAlign: 'left',
               padding: '0 0 0 15px', // Сдвиг текста вправо
-              lineHeight: 1.5, // Немного уменьшен line-height
             }}
           >
             {displayedText}
