@@ -127,11 +127,11 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               fontWeight: 600,
               opacity: 0.9,
               marginBottom: 4, // Выше текста
-              marginTop: -6, // Сдвиг вверх, чтобы было внутри окна
+              marginTop: -10, // Сдвиг вверх, чтобы было внутри окна
               color: '#fbbf24',
               flexShrink: 0,
-              textAlign: 'left', // Выравнивание вправо
-              paddingRight: '24px', // Отступ справа
+              textAlign: 'right', // Выравнивание вправо
+              paddingRight: '230px', // Отступ справа
               position: 'relative',
               zIndex: 2,
             }}
