@@ -220,7 +220,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '90%',
+            width: '100%',
             maxWidth: '600px',
             backgroundImage: 'url(/assets/ui/dialog_box_narrator.png)',
             backgroundSize: 'contain',
