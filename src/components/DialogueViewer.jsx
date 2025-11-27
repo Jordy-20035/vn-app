@@ -9,7 +9,7 @@ import { buildCharacterPath } from "../utils/characterPath";
     speed: ms per character for typewriter effect (default: 80)
 */
 
-export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
+export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -138,6 +138,10 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
             color: '#fff',
             boxShadow: '0 -4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
         {/* Speaker name */}
@@ -149,6 +153,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
               opacity: 0.9,
               marginBottom: 8,
               color: '#fbbf24',
+              flexShrink: 0,
             }}
           >
             {currentDialogue.speaker}
@@ -162,6 +167,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
             lineHeight: 1.6,
             fontSize: 15,
             minHeight: '3em',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            whiteSpace: 'pre-wrap',
+            maxWidth: '100%',
+            overflow: 'hidden',
+            flex: '1 1 auto',
+            display: 'block',
           }}
         >
           {displayedText}
@@ -223,6 +235,10 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
             color: '#fff',
             boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           <p
@@ -231,6 +247,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 80 }) {
               lineHeight: 1.6,
               fontSize: 15,
               minHeight: '3em',
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
+              maxWidth: '100%',
+              overflow: 'hidden',
+              flex: '1 1 auto',
+              display: 'block',
             }}
           >
             {displayedText}

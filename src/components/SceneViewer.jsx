@@ -124,7 +124,7 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
         <DialogueViewer
           dialogue={scene.dialogue}
           onComplete={handleDialogueComplete}
-          speed={80}
+          speed={20}
         />
       )}
 
