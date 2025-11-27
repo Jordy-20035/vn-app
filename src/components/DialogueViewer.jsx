@@ -251,7 +251,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               maxWidth: '100%',
               overflow: 'hidden',
               textAlign: 'left',
-              padding: '0 0 0 12px', // Сдвиг текста вправо
+              padding: '0 0 0 15px', // Сдвиг текста вправо
             }}
           >
             {displayedText}
