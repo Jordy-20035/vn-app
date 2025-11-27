@@ -151,8 +151,8 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             whiteSpace: 'normal',
             maxWidth: '100%',
             overflow: 'hidden',
-            textAlign: 'left',
-            paddingLeft: '12px', // Сдвиг текста вправо
+              textAlign: 'left',
+              paddingLeft: '18px', // Сдвиг текста еще правее
           }}
         >
           {displayedText}
@@ -212,7 +212,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
         <div
           style={{
             position: 'absolute',
-            top: '40%',
+            top: '35%', // Сдвинуто выше
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '90%',
@@ -260,7 +260,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
       {currentDialogue.speaker === 'narrator' && (
         <div style={{ 
           position: 'absolute',
-          top: 'calc(40% + 80px)', // Под диалоговым окном
+          top: 'calc(35% + 80px)', // Под диалоговым окном (обновлено под новую позицию)
           left: '50%',
           transform: 'translateX(-50%)',
           width: '90%',
