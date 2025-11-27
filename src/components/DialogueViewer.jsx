@@ -87,7 +87,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
           style={{
             position: 'absolute',
             bottom: 0,
-            left: currentDialogue.character.x || '-15%', // Левый край: -15% или -20%
+            left: currentDialogue.character.x || '10%', // Сдвинуто правее для лучшей видимости
             height: '100vh', // Огромный, от самого низа экрана
             width: 'auto',
             zIndex: 1, // Самый низкий z-index (под кнопками)
@@ -114,7 +114,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,
-            padding: 20,
+            padding: '20px 24px 20px 32px', // Больше padding слева для текста
             color: '#fff',
             boxShadow: '0 -4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
@@ -122,6 +122,8 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
+            minHeight: '140px', // Фиксированная минимальная высота
+            maxHeight: '140px', // Фиксированная максимальная высота
           }}
         >
         {/* Speaker name */}
@@ -146,14 +148,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             margin: '0 0 16px 0',
             lineHeight: 1.6,
             fontSize: 15,
-            minHeight: '3em',
             wordWrap: 'break-word',
             overflowWrap: 'break-word',
             whiteSpace: 'normal',
             maxWidth: '100%',
             overflow: 'hidden',
             textAlign: 'left',
-            padding: 0,
+            paddingLeft: '12px', // Сдвиг текста вправо
           }}
         >
           {displayedText}
@@ -161,26 +162,6 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             <span style={{ opacity: 0.5, animation: 'blink 1s infinite' }}>|</span>
           )}
         </p>
-
-        {/* Next button */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <button
-            onClick={handleNext}
-            style={{
-              padding: '8px 20px',
-              background: isTyping ? '#666' : '#007bff',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 8,
-              cursor: 'pointer',
-              fontSize: 14,
-              fontWeight: 600,
-              transition: 'all 0.2s',
-            }}
-          >
-            {isTyping ? 'Пропустить ▶▶' : 'Далее ▶'}
-          </button>
-        </div>
 
         {/* Progress indicator */}
         <div
@@ -196,6 +177,38 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
       </div>
       )}
 
+      {/* Next button - под диалоговым окном */}
+      {currentDialogue.speaker !== 'narrator' && (
+        <div style={{ 
+          position: 'absolute',
+          bottom: 'calc(32% - 80px)', // Под диалоговым окном
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '90%',
+          maxWidth: '600px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          zIndex: 11,
+        }}>
+          <button
+            onClick={handleNext}
+            style={{
+              padding: '8px 20px',
+              background: isTyping ? '#666' : '#dc2626', // Красный цвет
+              color: '#fff',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              fontSize: 14,
+              fontWeight: 600,
+              transition: 'all 0.2s',
+            }}
+          >
+            {isTyping ? 'Пропустить ▶▶' : 'Далее ▶'}
+          </button>
+        </div>
+      )}
+
       {/* Narrator box - top: 40% или 50% + transform для центра */}
       {currentDialogue.speaker === 'narrator' && (
         <div
@@ -205,13 +218,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '90%',
-            maxWidth: '900px',
+            maxWidth: '600px',
             backgroundImage: 'url(/assets/ui/dialog_box_narrator.png)',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,
-            padding: 20,
+            padding: '20px 24px 20px 32px', // Больше padding слева для текста
             color: '#fff',
             boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
@@ -219,6 +232,9 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
+            minHeight: '140px', // Фиксированная минимальная высота
+            maxHeight: '140px', // Фиксированная максимальная высота
+            width: '90%',
           }}
         >
           <p
@@ -226,14 +242,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               margin: 0,
               lineHeight: 1.6,
               fontSize: 15,
-              minHeight: '3em',
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
               whiteSpace: 'normal',
               maxWidth: '100%',
               overflow: 'hidden',
               textAlign: 'left',
-              padding: 0,
+              padding: '0 0 0 12px', // Сдвиг текста вправо
             }}
           >
             {displayedText}
@@ -241,24 +256,38 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               <span style={{ opacity: 0.5, animation: 'blink 1s infinite' }}>|</span>
             )}
           </p>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 12 }}>
-            <button
-              onClick={handleNext}
-              style={{
-                padding: '8px 20px',
-                background: isTyping ? '#666' : '#007bff',
-                color: '#fff',
-                border: 'none',
-                borderRadius: 8,
-                cursor: 'pointer',
-                fontSize: 14,
-                fontWeight: 600,
-                transition: 'all 0.2s',
-              }}
-            >
-              {isTyping ? 'Пропустить ▶▶' : 'Далее ▶'}
-            </button>
-          </div>
+        </div>
+      )}
+
+      {/* Next button - под диалоговым окном (narrator) */}
+      {currentDialogue.speaker === 'narrator' && (
+        <div style={{ 
+          position: 'absolute',
+          top: 'calc(40% + 80px)', // Под диалоговым окном
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '90%',
+          maxWidth: '600px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          zIndex: 11,
+        }}>
+          <button
+            onClick={handleNext}
+            style={{
+              padding: '8px 20px',
+              background: isTyping ? '#666' : '#dc2626', // Красный цвет
+              color: '#fff',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              fontSize: 14,
+              fontWeight: 600,
+              transition: 'all 0.2s',
+            }}
+          >
+            {isTyping ? 'Пропустить ▶▶' : 'Далее ▶'}
+          </button>
         </div>
       )}
     </div>
