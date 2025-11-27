@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { buildCharacterPath } from "../utils/characterPath";
+import CharacterSprite from "./CharacterSprite";
 
 /*
   DialogueViewer - Component for step-by-step dialogue display with typewriter effect
@@ -81,43 +81,23 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
       }}
     >
       {/* Character sprite - Левый край, огромный, от самого низа, z-index самый низкий */}
-      {currentDialogue.character && (() => {
-        const charPath = buildCharacterPath(currentDialogue.character);
-        console.log('DialogueViewer - Character:', currentDialogue.character, 'Path:', charPath);
-        return (
-          <div
-            key={currentDialogue.character.id}
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: currentDialogue.character.x || '-15%', // Левый край: -15% или -20%
-              height: '100vh', // Огромный, от самого низа экрана
-              width: 'auto',
-              zIndex: 1, // Самый низкий z-index (под кнопками)
-              pointerEvents: 'none',
-              animation: 'fadeIn 0.3s ease-in',
-            }}
-          >
-            <img
-              src={charPath}
-              alt={currentDialogue.character.id}
-              onError={(e) => {
-                console.error('Failed to load character image:', charPath, e);
-                e.target.style.display = 'none';
-              }}
-              onLoad={() => console.log('Character image loaded:', charPath)}
-              style={{
-                height: '100%',
-                width: 'auto',
-                maxWidth: 'none',
-                objectFit: 'contain',
-                transform: `scale(${currentDialogue.character.scale || 1})`,
-                transformOrigin: 'bottom center',
-              }}
-            />
-          </div>
-        );
-      })()}
+      {currentDialogue.character && (
+        <div
+          key={currentDialogue.character.id}
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: currentDialogue.character.x || '-15%', // Левый край: -15% или -20%
+            height: '100vh', // Огромный, от самого низа экрана
+            width: 'auto',
+            zIndex: 1, // Самый низкий z-index (под кнопками)
+            pointerEvents: 'none',
+            animation: 'fadeIn 0.3s ease-in',
+          }}
+        >
+          <CharacterSprite character={currentDialogue.character} />
+        </div>
+      )}
 
       {/* Dialogue box - bottom: 32% (в процентах от высоты экрана), НЕ прилипает к низу */}
       {currentDialogue.speaker !== 'narrator' && (
@@ -130,11 +110,11 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             width: '90%',
             maxWidth: '900px',
             backgroundImage: 'url(/assets/ui/dialog_box_character.png)',
-            backgroundSize: 'contain',
+            backgroundSize: '100% 100%',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,
-            padding: 20,
+            padding: '24px 28px',
             color: '#fff',
             boxShadow: '0 -4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
@@ -142,6 +122,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
+            minHeight: '120px',
           }}
         >
         {/* Speaker name */}
@@ -161,7 +142,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
         )}
 
         {/* Text with typewriter effect */}
-        <p
+        <div
           style={{
             margin: '0 0 16px 0',
             lineHeight: 1.6,
@@ -174,13 +155,16 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             flex: '1 1 auto',
             display: 'block',
+            position: 'relative',
+            zIndex: 1,
+            width: '100%',
           }}
         >
           {displayedText}
           {isTyping && (
             <span style={{ opacity: 0.5, animation: 'blink 1s infinite' }}>|</span>
           )}
-        </p>
+        </div>
 
         {/* Next button */}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -227,7 +211,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             width: '90%',
             maxWidth: '900px',
             backgroundImage: 'url(/assets/ui/dialog_box_narrator.png)',
-            backgroundSize: 'contain',
+            backgroundSize: '100% 100%',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,

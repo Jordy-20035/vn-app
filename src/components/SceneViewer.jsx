@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGame } from "../contexts/GameContext";
 import { useTelegram } from "../contexts/TelegramContext";
 import DialogueViewer from "./DialogueViewer";
+import CharacterSprite from "./CharacterSprite";
 
 /*
   SceneViewer - Enhanced with step-by-step dialogues and choice protection
@@ -141,23 +142,19 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
           pointerEvents: 'none',
         }}>
           {scene.characters.map((char) => (
-            <img
+            <div
               key={char.id}
-              src={char.image}
-              alt={char.id}
               style={{
                 position: 'absolute',
                 left: char.x || '10%',
                 bottom: 0,
                 height: '100%',
                 width: 'auto',
-                maxWidth: 'none',
-                objectFit: 'contain',
-                transform: `scale(${char.scale || 1})`,
-                transformOrigin: 'bottom center',
                 pointerEvents: 'none',
               }}
-            />
+            >
+              <CharacterSprite character={char} />
+            </div>
           ))}
         </div>
       )}
