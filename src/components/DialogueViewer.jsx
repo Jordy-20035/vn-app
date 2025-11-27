@@ -108,13 +108,13 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             left: '50%',
             transform: 'translateX(-50%)',
             width: '90%',
-            maxWidth: '900px',
+            maxWidth: '600px',
             backgroundImage: 'url(/assets/ui/dialog_box_character.png)',
-            backgroundSize: '100% 100%',
+            backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,
-            padding: '24px 28px',
+            padding: 20,
             color: '#fff',
             boxShadow: '0 -4px 20px rgba(0,0,0,0.3)',
             zIndex: 10,
@@ -122,7 +122,6 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            minHeight: '120px',
           }}
         >
         {/* Speaker name */}
@@ -142,7 +141,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
         )}
 
         {/* Text with typewriter effect */}
-        <div
+        <p
           style={{
             margin: '0 0 16px 0',
             lineHeight: 1.6,
@@ -150,21 +149,18 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             minHeight: '3em',
             wordWrap: 'break-word',
             overflowWrap: 'break-word',
-            whiteSpace: 'pre-wrap',
+            whiteSpace: 'normal',
             maxWidth: '100%',
             overflow: 'hidden',
-            flex: '1 1 auto',
-            display: 'block',
-            position: 'relative',
-            zIndex: 1,
-            width: '100%',
+            textAlign: 'left',
+            padding: 0,
           }}
         >
           {displayedText}
           {isTyping && (
             <span style={{ opacity: 0.5, animation: 'blink 1s infinite' }}>|</span>
           )}
-        </div>
+        </p>
 
         {/* Next button */}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -211,7 +207,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             width: '90%',
             maxWidth: '900px',
             backgroundImage: 'url(/assets/ui/dialog_box_narrator.png)',
-            backgroundSize: '100% 100%',
+            backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             borderRadius: 12,
@@ -233,11 +229,11 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               minHeight: '3em',
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
-              whiteSpace: 'pre-wrap',
+              whiteSpace: 'normal',
               maxWidth: '100%',
               overflow: 'hidden',
-              flex: '1 1 auto',
-              display: 'block',
+              textAlign: 'left',
+              padding: 0,
             }}
           >
             {displayedText}

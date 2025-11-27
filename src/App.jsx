@@ -531,16 +531,10 @@ function App() {
 
   // Back from scene
   const handleBackFromScene = () => {
-    showConfirm(
-      "Вы уверены? Прогресс серии не сохранится.",
-      (confirmed) => {
-        if (confirmed) {
-          setCurrentSceneId(null);
-          setSelectedStory(null);
-          setCurrentEpisodeId(null);
-        }
-      }
-    );
+    // Direct navigation back without confirmation for now
+    setCurrentSceneId(null);
+    setSelectedStory(null);
+    setCurrentEpisodeId(null);
   };
 
   // Helper function to resolve scene redirects (goto)
