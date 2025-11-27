@@ -87,7 +87,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
           style={{
             position: 'absolute',
             bottom: 0,
-            left: currentDialogue.character.x || '10%', // Сдвинуто правее для лучшей видимости
+            left: currentDialogue.character.x || '20%', // Сдвинуто еще правее для полной видимости персонажа
             height: '100vh', // Огромный, от самого низа экрана
             width: 'auto',
             zIndex: 1, // Самый низкий z-index (под кнопками)
@@ -133,9 +133,12 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               fontSize: 14,
               fontWeight: 600,
               opacity: 0.9,
-              marginBottom: 8,
+              marginBottom: 6, // Немного выше текста (было 8)
+              marginTop: -2, // Небольшой сдвиг вверх
               color: '#fbbf24',
               flexShrink: 0,
+              textAlign: 'left', // Вернули выравнивание влево
+              paddingLeft: '8px', // Небольшой отступ вправо от левого края
             }}
           >
             {currentDialogue.speaker}
