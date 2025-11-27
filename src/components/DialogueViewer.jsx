@@ -134,7 +134,7 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
               fontWeight: 600,
               opacity: 0.9,
               marginBottom: 6, // Немного выше текста (было 8)
-              marginTop: -2, // Небольшой сдвиг вверх
+              marginTop: -1, // Небольшой сдвиг вверх
               color: '#fbbf24',
               flexShrink: 0,
               textAlign: 'left', // Вернули выравнивание влево
