@@ -154,8 +154,24 @@ export default function SceneViewer({ scene, onChoose, onFreeAction, isProcessin
               </p>
             )}
 
-            {/* Choices */}
-            <div className="vn-choices" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {/* Choices container - bottom: 2%, height: 28%, столбиком */}
+            <div 
+              className="vn-choices" 
+              style={{ 
+                position: 'absolute',
+                bottom: '2%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '90%',
+                maxWidth: '900px',
+                height: '28%',
+                display: "flex", 
+                flexDirection: "column", 
+                gap: 10,
+                overflowY: 'auto',
+                padding: '0 4px',
+              }}
+            >
               {scene.choices && scene.choices.map((choice) => {
                 const availability = isChoiceAvailable(choice);
                 const isFree = choice.free;

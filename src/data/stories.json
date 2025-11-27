@@ -14,7 +14,7 @@
         {
           "id": "ep_1",
           "title": "Пилотная серия",
-          "sceneIds": ["scene_001", "scene_002", "scene_003", "scene_004"]
+          "sceneIds": ["scene_001_bottom", "scene_001_survive", "scene_001_revenge", "scene_001_part2", "scene_002_flashback_tv", "scene_002_hair", "scene_002_interview", "scene_002_attack", "scene_002_soft", "scene_003_door", "scene_003_take", "scene_003_kick", "scene_003_silent", "scene_005_breakdown", "scene_006_flashback_A", "scene_006_flashback_A_short", "scene_006_flashback_B", "scene_006_flashback_C", "scene_006_C_facts", "scene_006_C_concern", "scene_006_flashback_D", "scene_007_news"]
         }
       ]
     },
