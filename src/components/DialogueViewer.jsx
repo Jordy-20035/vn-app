@@ -230,8 +230,8 @@ export default function DialogueViewer({ dialogue, onComplete, speed = 20 }) {
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
-            minHeight: '140px', // Фиксированная минимальная высота
-            maxHeight: '140px', // Фиксированная максимальная высота
+            minHeight: '180px', // Увеличенная высота для narrator
+            maxHeight: '180px', // Увеличенная высота для narrator
           }}
         >
           <p
